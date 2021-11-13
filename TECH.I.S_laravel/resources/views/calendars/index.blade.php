@@ -43,19 +43,51 @@
         var keys = Object.keys(events);
         
         // 配列をセット
-        var setEvents = []
+        var setEvents = [];
 
         // ループ処理でsetEventsにtitle,startを入れる。
         for (var i =0; i<keys.length; i++){
             var event =
             {
                 title: (events[i].body),
-                start: (start[i].date),
+                start: (start[i].date)+'T'+(start[i].start_time),
                 // color: '#378006',
             };
             setEvents.push(event);
         };
+
+        var setEvents2 = [
+            {
+                title: 'test100',
+                start: '2021-11-08',
+                color: '#378006',
+            }
+        ];
+        console.log(setEvents2);
+
+        // const allEvents = Object.assign(setEvents,setEvents2);
+
+        // $param_json_plansを受け取る
+        var plans = @json($param_json_plans);
+        // jsonをオブジェクト化
+        var plans = JSON.parse(plans);
         
+        console.log(plans[0].A_a_1);
+        
+        var setPlans;
+        if (plans[0].A_a_1 != undefined){
+            setPlans = 'aaa'
+        };
+
+        var setEvents3 = [
+            {
+                title: setPlans,
+                start: '2021-11-10',
+                color: '#378006',
+            }
+        ];
+        
+        const allEvents = Object.assign(setEvents,setEvents2,setEvents3);
 
         document.addEventListener("DOMContentLoaded", function() {
             var calendarEl = document.getElementById("calendar");
@@ -81,7 +113,7 @@
                     center: "title",
                     right: "dayGridMonth,timeGridWeek, today",
                 },
-                events: setEvents,
+                events: allEvents,
                 // getEventData(events,start),
 
                 dateClick: function(info) {

@@ -1050,3 +1050,7 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
     /* don't display any button-related controls */
   }
 }
+
+.fc-time{
+  display : none;
+}
