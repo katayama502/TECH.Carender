@@ -65,12 +65,10 @@
 
         var setPlans = [];
         for (var i = 0; i < 1; i++) {
-            if (plans[i].A_a_1 != undefined) 
-                planName = {
-                    title: 'aaa',};
-            else(plans[i].A_a_1 = undefined)
-            planName = {
-                    title: undefined,};
+            if (plans[i].A_a_1 != null) 
+                planName = 'aaa';
+            // else(plans[i].A_a_1 = null)
+            //     planName =  undefined;
             setPlans.push(planName);
         };
 
@@ -81,14 +79,15 @@
 
         for (var i = 0; i < keys2.length; i++) {
             var event2 = {
-                title: setPlans,
+                title: setPlans[i],
                 start: (plans[i].A_a_1) ,
                 color: '#378006',
             };
-            setEvents.push(event2);
+            setEvents2.push(event2);
         };
 
-        console.log(setPlans); 
+        console.log(setPlans[1]);
+        console.log(setEvents2); 
 
         const allEvents = Object.assign(setEvents, setEvents2);
 
