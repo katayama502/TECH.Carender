@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+/**
+ * カレンダー表示 /views/calendar/index.blade.php
+ */
+Route::get('/calendar',[App\Http\Controllers\CalendarController::class, 'setEvents']) ;
+
