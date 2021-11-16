@@ -27,24 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 start: "2021-11-01",
                 color: '#257e4a'
             },
-            "/setEvents",
-            // $.getJSON(setEvents, (data) => {
-            //     console.log(`title=${data.title}, =${data.start}`);
-            //   }),
 
         ],
-
-    
-        eventDrop: function (info) {
-            //eventをドラッグしたときの処理
-            //editEventDate(info);
-        
-        },
-
-        dateClick: function(info) {
-            window.location.href = 'http://localhost/TECH.Carender/goal_input.html?date= ' + info.dateStr;
-        },
-        businessHours: true,
     });
     calendar.render();
 });

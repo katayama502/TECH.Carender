@@ -26,70 +26,148 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script>
-    </script>
-
-    <script>
+        //////////////////////////////
+        // 管理者用イベント表示
+        //////////////////////////////
+        
         // $param_json_bodyを受け取る
         var events = @json($param_json_body);
         // jsonをオブジェクト化
         var events = JSON.parse(events);
-
         // $param_json_dateを受け取る
         var start = @json($param_json_date);
         // jsonをオブジェクト化
         var start = JSON.parse(start);
-
         // 変数のキーの数を取得
-        var keys = Object.keys(events);
-
+        var eventsKeys = Object.keys(events);
         // 配列をセット
         var setEvents = [];
-
+        // 背景色の設定
+        var eventsColor = '#378006';
         // ループ処理でsetEventsにtitle,startを入れる。
-        for (var i = 0; i < keys.length; i++) {
+        for (var i = 0; i < eventsKeys.length; i++) {
             var event = {
                 title: (events[i].body),
                 start: (start[i].date) + 'T' + (start[i].start_time),
-                // color: '#378006',
+                color: eventsColor,
             };
             setEvents.push(event);
         };
 
-        
+        //////////////////////////////
+        // ログインユーザーの予定を表示
+        //////////////////////////////
+
         // $param_json_plansを受け取る
         var plans = @json($param_json_plans);
         // jsonをオブジェクト化
         var plans = JSON.parse(plans);
-
-
-
-        var setPlans = [];
-        for (var i = 0; i < 1; i++) {
-            if (plans[i].A_a_1 != null) 
-                planName = 'aaa';
-            // else(plans[i].A_a_1 = null)
-            //     planName =  undefined;
-            setPlans.push(planName);
-        };
-
         // 変数のキーの数を取得
-        var keys2 = Object.keys(plans);
+        var plansKeys = Object.keys(plans);
         // 配列をセット
-        var setEvents2 = [];
-
-        for (var i = 0; i < keys2.length; i++) {
-            var event2 = {
-                title: setPlans[i],
-                start: (plans[i].A_a_1) ,
-                color: '#378006',
+        var setPlans = [];
+        // 背景色の設定
+        var plansColor = 'purple';
+        for (var i = 0; i < plansKeys.length; i++) {
+            var plansUser = plans[i];
+            
+            var eventPlanA_a_1 = {
+                title: '01 手続き関係',
+                start: plansUser.A_a_1,
+                color: plansColor,
             };
-            setEvents2.push(event2);
+            setPlans.push(eventPlanA_a_1);
+
+            var eventPlanA_a_2 = {
+                title: '01 環境構築',
+                start: plansUser.A_a_2 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_a_2);
+
+            var eventPlanA_b_1 = {
+                title: '02 HTML基礎文法1',
+                start: plansUser.A_b_1 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_b_1);
+
+            var eventPlanA_b_2 = {
+                title: '02 HTML基礎文法2',
+                start: plansUser.A_b_2 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_b_2);
+
+            var eventPlanA_b_3 = {
+                title: '02 CSS基礎文法1',
+                start: plansUser.A_b_3 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_b_3);
+
+            var eventPlanA_b_4 = {
+                title: '02 CSS基礎文法2',
+                start: plansUser.A_b_4 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_b_4);
+
+            var eventPlanA_c_1 = {
+                title: '03 Git概要、Gitコマンド',
+                start: plansUser.A_c_1 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_c_1);
+
+            var eventPlanA_c_2 = {
+                title: '03 GitHub',
+                start: plansUser.A_c_2 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_c_2);
+
+            var eventPlanA_d_1 = {
+                title: '04 ポートフォリオ概要',
+                start: plansUser.A_d_1 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_d_1);
+
+            var eventPlanA_d_2 = {
+                title: '04 ポートフォリオ作成１',
+                start: plansUser.A_d_2 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_d_2);
+
+            var eventPlanA_d_3 = {
+                title: '04 ポートフォリオ作成２',
+                start: plansUser.A_d_3 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_d_3);
+
+            var eventPlanA_d_4 = {
+                title: '04 ポートフォリオ作成２',
+                start: plansUser.A_d_4 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_d_4);
+
+            var eventPlanA_d_5 = {
+                title: '04 ポートフォリオ演習',
+                start: plansUser.A_d_5 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_d_5);
         };
+        
+        console.log(setEvents);
 
-        console.log(setPlans[1]);
-        console.log(setEvents2); 
-
-        const allEvents = Object.assign(setEvents, setEvents2);
+        var allEvents = setEvents.concat(setPlans);
+        // const allEvents = Object.assign(setEvents,setPlans);
+        console.log(allEvents);
 
         document.addEventListener("DOMContentLoaded", function() {
             var calendarEl = document.getElementById("calendar");
@@ -116,7 +194,6 @@
                     right: "dayGridMonth,timeGridWeek, today",
                 },
                 events: allEvents,
-                // getEventData(events,start),
 
                 dateClick: function(info) {
                     window.location.href = 'http://localhost/TECH.Carender/goal_input.html?date= ' + info.dateStr;
