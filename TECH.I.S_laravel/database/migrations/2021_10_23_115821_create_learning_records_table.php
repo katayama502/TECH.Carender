@@ -93,3 +93,4 @@ class CreateLearningRecordsTable extends Migration
         Schema::dropIfExists('learning-records');
     }
 }
+

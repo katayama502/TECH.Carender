@@ -92,4 +92,6 @@ class CreateLearningPlansTable extends Migration
     {
         Schema::dropIfExists('learning-plans');
     }
+
 }
+
