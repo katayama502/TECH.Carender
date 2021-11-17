@@ -14,6 +14,11 @@ use App\Http\Controllers\TechController;
 |
 */
 
+
+
+
+
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -25,3 +30,7 @@ Route::get('Carender', [TechController::class,'getCarender']);
 Route::get('goal_input', [TechController::class,'getgoal']);
 
 
+/**
+ * カレンダー表示 /views/calendar/index.blade.php
+ */
+Route::get('/calendar',[App\Http\Controllers\CalendarController::class, 'setEvents']) ;
