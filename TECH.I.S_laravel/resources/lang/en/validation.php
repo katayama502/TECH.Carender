@@ -140,6 +140,27 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'genre' => [
+            'required' =>'課題を選択してください',
+        ],
+        'category_name' => [
+            'required' =>'カテゴリを選択してください',
+        ],
+        'lesson_number' => [
+            'required' =>'レッスンNoを選択してください',
+        ],
+        'memo' => [
+            'required' =>'メモを入力してください',
+        ],
+        'event_name' => [
+            'required' =>'イベント名を入力してください',
+        ],
+        'start_time' => [
+            'required' =>'開始時刻を入力してください',
+        ],
+        'end_time' => [
+            'required' =>'終了時刻を入力してください',
+        ],
     ],
 
     /*

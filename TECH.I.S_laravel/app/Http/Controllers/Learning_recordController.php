@@ -8,4 +8,3 @@ class Learning_recordController extends Controller
 {
     
 }
-}
