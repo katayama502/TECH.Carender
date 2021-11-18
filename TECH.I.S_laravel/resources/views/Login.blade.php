@@ -9,29 +9,34 @@
     <title>TECH.I.S_システムログイン</title>
 </head>
 <body>
-    
+
     <div id="back">
     <div class="container">
         <h1>ログイン画面</h1>
         <div class="item">
             <img class="item1" src="img/TECH.png">
         </div>
+
         <form action="thack" method="post">
         @csrf
+
         <div class="item">
             <label for="mailaddles">メールアドレス</label>
         </div>
         <div class="item">       
+
             <input id="mailaddles" type="text"　 name="Introduction_name2" value="">
             @if (!empty($errors->first('Introduction_name2')))
             <p class="error_message">{{$errors->first('Introduction_name2')}}</p>
             @endif
+
         </div>
         <br>
         <div class="item">
             <label for="pass">パスワード</label>
         </div>
         <div class="item"> 
+
             <input id="pass" type="password"　 name="Introduction_pass2" value="">
             @if (!empty($errors->first('Introduction_pass2')))
             <p class="error_message">{{$errors->first('Introduction_pass2')}}</p>
@@ -46,4 +51,5 @@
 </form>
 </body>
 </html>
+
 

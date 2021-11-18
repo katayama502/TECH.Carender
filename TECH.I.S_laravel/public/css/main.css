@@ -13,12 +13,14 @@ h1{
 .item {
     margin-left: auto;
     margin-right: auto;
+
     text-align: center;
 }
 .item1{
     
     height: 50%;
     width: auto;
+
 }
 
 .btn,
@@ -62,6 +64,7 @@ a.btn--yellow:hover {
   background-image:url("../img/back1.jpeg") ;
   background-repeat: no-repeat;
   background-size: cover;
+
 }
 
 .btn,
@@ -99,4 +102,5 @@ button.btn--yellow:hover {
   color: #000;
   background: #fff20a;
   border-bottom: 2px solid #ccc100;
+
 }

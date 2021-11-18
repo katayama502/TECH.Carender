@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 // use resources\views;
 use Illuminate\Http\Request;
+
 use App\Models\Administrators;
 use App\Models\learning_plan;
 use App\Models\learning_record;
+
 
 class TechController extends Controller
 {
@@ -21,9 +23,11 @@ class TechController extends Controller
     return view('New_sain');
   }
 
+
   public function getCarender(){
     return view('Carender');
   }
+
 
   public function getgoal(Request $request){
     $data = $request->input('date');
@@ -88,5 +92,6 @@ class TechController extends Controller
     
     
 }
+
 
 

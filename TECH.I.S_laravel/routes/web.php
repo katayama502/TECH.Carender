@@ -14,6 +14,8 @@ use App\Http\Controllers\TechController;
 |
 */
 
+
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -24,8 +26,10 @@ Route::get('New_sain', [TechController::class,'getNew']);
 Route::get('Carender', [TechController::class,'getCarender']);
 Route::get('goal_input', [TechController::class,'getgoal']);
 
+
 //DBへのアドレス・PASSの登録 //
 Route::post('/new_add',[TechController::class,'add']);
 Route::get('/new_add',[TechController::class,'add']);
 Route::post('thack',[TechController::class,'chtecktest']);
+
 

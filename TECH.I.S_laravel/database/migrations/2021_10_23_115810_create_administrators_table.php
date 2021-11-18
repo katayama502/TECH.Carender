@@ -13,6 +13,8 @@ class CreateAdministratorsTable extends Migration
      */
     public function up()
     {
+
+
         Schema::create('administrators', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
             $table->string('email',254)->unique();
@@ -29,6 +31,8 @@ class CreateAdministratorsTable extends Migration
      */
     public function down()
     {
+
         Schema::dropIfExists('administrators');
     }
 }
+
