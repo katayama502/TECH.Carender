@@ -4,89 +4,118 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     
-    <link rel="stylesheet" href="css/sub.css">
     <title>目標・実績入力画面</title>
 </head>
 <body>
-    <div id = 'day'></div>
-    <div class="panel-heading">
-      <a href="{{ url('/Carender') }}"><u>>>カレンダー</u></a>  
-    </div>
-    <div class="container">
-        
-        <div class="item">
-        <h1>目標</h1>
-        @foreach ($learningplans as $learningplan)
-        <div>
-        <form action="{{ url('plan_delete/' .$learningplan) }}" method="post" class="form-horizontal">
-        {{ csrf_field() }}
-          <p class="learning_plan">{{$learningplan}}</p>
-          <button type="submit" class="btn--delete" name="submit" id = "sub1" value="plan" onClick="alert('削除しました！');">削除</button>
+    <header>
+        <div class="container"> 
+            <h2>2021年 11月 10日</h2>
+        </div>
+    </header>
+    <div class="plan-record-wrapper">
+        <div class="container">  
+            <div class="learning-item">
+                <h2>目標</h2>
+                <div class="scrollbox">
+                    @foreach ($learningplans as $learningplan)
+                    <form action="{{ url('plan_delete/' .$learningplan) }}" method="post" class="form-horizontal">
+                        {{ csrf_field() }}
+                        <p class="learning_plan">{{$learningplan}}</p>
+                        <button type="submit" class="btn--delete" name="submit" id = "sub1" value="plan">削除</button>
+                    </form>
+                    @endforeach
+                </div>
+            </div> 
+            <div class="learning-item">
+                <h2>実績</h2>
+                <div class="scrollbox">
+                    @foreach ($learningrecords as $learningrecord)
+                    <form action="{{ url('record_delete/' .$learningrecord) }}" method="post" class="form-horizontal">
+                        {{ csrf_field() }}
+                        <p class="learning_plan">{{$learningrecord}}</p>
+                        <button type="submit" class="btn--delete" name="submit" id = "sub1" value="plan">削除</button>
+                    </form>  
+                    @endforeach
+                </div>
+            </div>
+        </div>    
+    </div> 
+    <div class="input-wrapper">
+        <div class="container">
+            <h2>学習項目選択</h2>
+        </div>      
+        <form action="{{ url('goal_input/1/2020-10-30') }}" method="post" class="container">
+            {{ csrf_field() }}
+            <div class="item-input">
+                <!-- 1つめのセレクトボックス。これは静的に生成されている（最初から内容が決まっている） -->
+                <select name="genre" id="genre" class="input-form">
+                    <option value="" disabled selected>課題を選択してください</option>
+                    <option value="基礎課題">基礎課題</option>
+                    <option value="応用課題">応用課題</option>
+                    <option value="開発課題">開発課題</option>
+                </select>
+                <!-- 2つめのセレクトボックス。1つめで選んだジャンルに応じて、動的に選択肢を追加する -->
+                <select name="category_name" id="category_name" class="input-form" disabled>
+                    <option value="" disabled selected>カテゴリを選択してください</option>
+                </select>
+                <!-- 3つめのセレクトボックス。2つめで選んだカテゴリに応じて、動的に選択肢を追加する -->
+                <select name="lesson_number" id="lesson_number" class="input-form" disabled> 
+                    <option value="" disabled selected>レッスンNoを選択してください</option>
+                </select>
+            </div>
+            <div class="item-input">
+                <button type="submit" class="btn--yellow btn--cubic" name="submit" value="plan">目標登録</button>
+                <button type="submit" class="btn--yellow btn--cubic" name="submit" value="record">実績登録</button>
+            </div>
         </form>
-        </div>
-        @endforeach
-        </div>
-        <div class="item">
-        <h1>実績</h1>
-        @foreach ($learningrecords as $learningrecord)
-        <div>
-        <form action="{{ url('record_delete/' .$learningrecord) }}" method="post" class="form-horizontal">
-        {{ csrf_field() }}
-          <p class="learning_plan">{{$learningrecord}}</p>
-          <button type="submit" class="btn--delete" name="submit" id = "sub1" value="plan">削除</button>
-        </form>
-        </div>
-        @endforeach
-        </div>
-        <br>
-       
     </div>
-    <div class="container2">
-        
-        <div class="item2">
-            <h1>学習項目選択</h1>
+    <div class="memo-wrapper">
+        <div class="container">
+            <h2>メモ</h2>
         </div>
-        <form action="{{ url('goal_input/1/2020-10-30') }}" method="post" class="form-horizontal">
-        {{ csrf_field() }}
-          <!-- 1つめのセレクトボックス。これは静的に生成されている（最初から内容が決まっている） -->
-          <select name="genre" id="genre">
-            <option disabled selected>課題を選択してください</option>
-            <option value="基礎課題">基礎課題</option>
-            <option value="応用課題">応用課題</option>
-            <option value="開発課題">開発課題</option>
-          </select>
-          <!-- 2つめのセレクトボックス。1つめで選んだジャンルに応じて、動的に選択肢を追加する -->
-          <select name="category_name" id="category_name" disabled>
-            <option disabled selected>カテゴリを選択してください</option>
-          </select>
-          <!-- 3つめのセレクトボックス。2つめで選んだジャンルに応じて、動的に選択肢を追加する -->
-          <select name="lesson_number" id="lesson_number" disabled>
-            <option disabled selected>レッスンNoを選択してください</option>
-          </select>
-          <button type="submit" class="btn btn--yellow btn--cubic" name="submit" id = "sub1" value="plan">目標登録</button>
-          <button type="submit" class="btn btn--yellow btn--cubic" name="submit" id = "sub2" value="record">実績登録</button>
+        <form action="{{ url('memo_edit') }}" method="post" class="container">
+            {{ csrf_field() }}
+            <div class="memo-input">
+                <textarea name="memo" class="text-form">{{ $memo }}</textarea>
+            </div>
+            <div class="memo-input">
+                <button type="submit" class="btn--yellow btn--cubic" name="submit" value="add">メモ保存</button>
+                <button type="submit" class="btn--yellow btn--cubic" name="submit" value="delete">メモクリア</button>
+            </div>
         </form>
     </div>
-    <div class="container3">
-      <div class="item2">
-        <h1>メモ</h1>
-      </div>
-      <form action="{{ url('memo_edit') }}" method="post" class="form-horizontal">
-        {{ csrf_field() }}
-        <input id="memo" type="text" name="memo" value="{{ $memo }}">
-        <button type="submit" class="btn btn--yellow btn--cubic" id = "sub3" value="add">保存</button>
-      </form>
-      <form action="{{ url('memo_delete') }}" method="post">
-      {{ csrf_field() }}
-        <button type="submit" class="btn btn--yellow btn--cubic" id = "sub3" value="delete">削除</button>
-      </form>
-    </div>
-    <script> 
-    const params = new URLSearchParams(window.location.search);
-    var date1 = document.getElementById('day').innerHTML = (params.get('date'));
+    <footer>
+        <div class="footer_link">
+            <button onclick="location.href='{{ url('/Carender')}}'">カレンダーへ戻る</button>
+        </div>
+    </footer>
+    <script>
+        toastr.options = {
+          "positionClass": "toast-top-center",
+          "timeOut": "1500",
+        };
+            @if (session('flash_message'))
+                $(function () {
+                        toastr.success('{{ session('flash_message') }}');                
+                });
+            @endif
+            @if (count($errors) > 0)
+                $(function () {
+                        toastr.error('{!! (implode('<br>',$errors->all())) !!}');                
+                });
+            @endif
+    </script>
 
-    //料理ジャンルの値と、それに対応するメニュー一覧を格納しておく -- [1]
+    <script> 
+    
+    const params = new URLSearchParams(window.location.search);
+    //var date1 = document.getElementById('day').innerHTML = (params.get('date'));
+
+    //ジャンルの値と、それに対応するカテゴリ一覧を格納しておく
     const categoryList = 
           {
             "基礎課題": ["01_はじめに", "02_HTML/CSS", "03_Git", "04_ポートフォリオ", "05_PHP", "06_JavaScript", "07_SQL"],
@@ -160,9 +189,145 @@
 
     </script>
     <style>
-      .learning_plan{
-        display: inline;
+      body {
+          margin: 40px 10px;
+          padding: 0;
+          font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+          font-size: 14px;
       }
+
+      .container {
+       max-width: 900px;
+       margin: 0 auto;
+       display: flex;
+      }
+
+      header{
+        height: 65px;
+        width: 100%;
+      }
+      
+      header h2{
+        width: 100%;
+        text-align: center;
+        padding-bottom :10px;
+        border-bottom: solid 1px #797979;
+      }
+
+      .plan-record-wrapper{
+        height: 300px;
+      }
+
+      .plan-record-wrapper .learning-item{
+        flex: auto;
+        width: 50%;
+        padding: 0 10px;
+        height: 100%;
+      }
+
+      .plan-record-wrapper .learning_plan{
+        padding-left: 10px;
+        display: inline-block;
+      }
+
+      .scrollbox{
+        width: 100%;                /* 横幅を200pxに指定 */
+        height: 200px;               /* 横幅を200pxに指定 */
+        border: 1px solid #000;      /* わかりやすくボーダーを引く */
+        overflow-y: scroll;          /* 縦方向にスクロール可能にする */
+      }
+
+      .input-wrapper {
+        height: 170px;
+      }
+
+      .input-wrapper .item-input{
+        flex: auto;
+        width: 50%;
+        padding: 0 10px;
+        text-align: center;
+      }
+
+      .input-wrapper .item-input button{
+        flex: auto;
+        width: 50%;
+        margin: 0px auto 10px auto;
+      }
+
+      .input-wrapper h2{
+        display: block;
+        padding: 0 10px;
+      }
+
+      .input-wrapper .input-form{
+        display: block;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+
+      .memo-wrapper{
+        height: 170px
+      }
+
+      .memo-wrapper h2{
+        display: block;
+        padding: 0 10px;
+      }
+
+      .memo-wrapper .text-form{
+        width: 100%;
+      }
+
+      .memo-wrapper .memo-input{
+        flex: auto;
+        width: 50%;
+        padding: 0 10px;
+        text-align: center;
+      }
+
+      .memo-wrapper button, .input-wrapper button{
+        width: 50%;
+        display: block;
+        margin: 0px auto 10px auto;
+      }
+
+      textarea {
+       height: calc( 1.3em * 3 );
+       line-height: 1.3;
+      }
+
+      footer{
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .footer_link{
+        float:right;
+      }
+
+      button{
+        color: #000;
+        background-color: #cccccc;
+        border: none;
+        cursor: pointer;
+        border-radius: 0.5rem;
+      }
+
+      .btn--yellow {
+        color: #000;
+        background-color: #fff100;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        box-shadow: 0 7px #ccc100;
+      }
+
+      .btn--yellow:active {
+        box-shadow: none;
+        position: relative;
+        top: 5px;
+      }
+      
     </style>
 </body>
 </html>

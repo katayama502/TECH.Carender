@@ -29,4 +29,6 @@ Route::post('plan_delete/{learningplan}', [App\Http\Controllers\Learning_planCon
 Route::post('record_delete/{learningrecord}', [App\Http\Controllers\Learning_planController::class, 'deleteRecord']);
 Route::post('memo_edit', [App\Http\Controllers\MemoController::class, 'edit']);
 Route::post('memo_delete', [App\Http\Controllers\MemoController::class, 'delete']);
-
+Route::get('event_input', [App\Http\Controllers\EventController::class, 'index']);
+Route::post('event_edit', [App\Http\Controllers\EventController::class, 'edit']);
+Route::post('event_delete/{event_delete}', [App\Http\Controllers\EventController::class, 'delete']);

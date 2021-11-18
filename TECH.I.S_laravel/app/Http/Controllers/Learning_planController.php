@@ -26,7 +26,7 @@ class Learning_planController extends Controller
         $genre = $request->genre;
         $category_name = $request->category_name;
         $lesson_number = $request->lesson_number;
-        $learn = Learning_plan::$genreArray[$genre]."-".Learning_plan::$categoryArray[$category_name]."-".Learning_plan::$lessonNumberArray[$lesson_number];
+        $learn = Learning_plan::$lessonNameArray[$genre."_".$category_name."_".$lesson_number];
         if($request->submit == "plan"){
             //学習予定更新
             Learning_plan::where('user_id',$user_id)->update([
@@ -39,7 +39,7 @@ class Learning_planController extends Controller
                 $learn => $date,
             ]);
         }
-        return redirect('/goal_input');
+        return redirect('/goal_input')->with('flash_message', '登録が完了しました');
     }
     /**
      * 学習予定取得
@@ -49,13 +49,17 @@ class Learning_planController extends Controller
      */
     public function index(Request $request)
     {
+        $lessonNameArrayflip=array_flip(Learning_plan::$lessonNameArray);
+        //var_dump($lessonNameArrayflip); exit;
         // 日付とIDは$requestから取得するようにしたい
         // 学習予定の取得
         $learningplans = Learning_plan::find(1)->toArray();
         $planResponse = array();
+        
         foreach($learningplans as $key => $learningplan){
             if($learningplan === '2020-10-30'){
-                array_push($planResponse,$key);
+                $lessonName = $lessonNameArrayflip[$key];
+                array_push($planResponse,$lessonName);
             }
         }
         
@@ -64,14 +68,14 @@ class Learning_planController extends Controller
         $recordResponse = array();
         foreach($learningrecords as $key => $learningrecord){
             if($learningrecord === '2020-10-30'){
-                array_push($recordResponse,$key);
+                $lessonName = $lessonNameArrayflip[$key];
+                array_push($recordResponse,$lessonName);
             }
         }
 
         //メモの取得
         $memo = Memo::where('date','2020-10-30')->where('user_id',1);
         if ($memo === null) {
-            // user doesn't exist
             $memoResponse = "";
         }else{
         $memo = Memo::where('date','2020-10-30')->where('user_id',1)->value('body');
@@ -92,8 +96,9 @@ class Learning_planController extends Controller
      */
     public function deletePlan(Request $request, $learningplan)
     {
-        Learning_plan::where('user_id', 1)->update([ $learningplan => null]);
-        return redirect('goal_input');
+        $deletelearningplan = Learning_plan::$lessonNameArray[$learningplan];
+        Learning_plan::where('user_id', 1)->update([ $deletelearningplan => null]);
+        return redirect('goal_input')->with('flash_message', '削除が完了しました');
     }
 
     /**
@@ -104,7 +109,8 @@ class Learning_planController extends Controller
      */
     public function deleteRecord(Request $request, $learningrecord)
     {
-        Learning_record::where('user_id', 1)->update([ $learningrecord => null]);
-        return redirect('goal_input');
+        $deletelearningrecord = Learning_plan::$lessonNameArray[$learningrecord];
+        Learning_record::where('user_id', 1)->update([ $deletelearningrecord => null]);
+        return redirect('goal_input')->with('flash_message', '削除が完了しました');
     }
 }
