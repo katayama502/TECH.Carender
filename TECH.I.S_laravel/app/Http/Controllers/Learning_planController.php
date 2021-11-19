@@ -96,7 +96,10 @@ class Learning_planController extends Controller
      */
     public function deletePlan(Request $request, $learningplan)
     {
+        //レッスン名をカラム名に変換
         $deletelearningplan = Learning_plan::$lessonNameArray[$learningplan];
+
+        //指定したカラムをNullにする
         Learning_plan::where('user_id', 1)->update([ $deletelearningplan => null]);
         return redirect('goal_input')->with('flash_message', '削除が完了しました');
     }
@@ -109,7 +112,10 @@ class Learning_planController extends Controller
      */
     public function deleteRecord(Request $request, $learningrecord)
     {
+        //レッスン名をカラム名に変換
         $deletelearningrecord = Learning_plan::$lessonNameArray[$learningrecord];
+        
+        //指定したカラムをNullにする
         Learning_record::where('user_id', 1)->update([ $deletelearningrecord => null]);
         return redirect('goal_input')->with('flash_message', '削除が完了しました');
     }

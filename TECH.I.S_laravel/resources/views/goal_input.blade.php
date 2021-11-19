@@ -94,99 +94,118 @@
         </div>
     </footer>
     <script>
+        ///////////////////
+        //バリデーション処理//
+        ///////////////////
+
+        //メッセージ表示場所、時間の設定
         toastr.options = {
           "positionClass": "toast-top-center",
           "timeOut": "1500",
         };
-            @if (session('flash_message'))
-                $(function () {
-                        toastr.success('{{ session('flash_message') }}');                
-                });
-            @endif
-            @if (count($errors) > 0)
-                $(function () {
-                        toastr.error('{!! (implode('<br>',$errors->all())) !!}');                
-                });
-            @endif
-    </script>
+        //登録、メモ入力完了メッセージ
+        @if (session('flash_message'))
+            $(function () {
+                    toastr.success('{{ session('flash_message') }}');                
+            });
+        @endif
+        //エラーメッセージ
+        @if (count($errors) > 0)
+            $(function () {
+                    toastr.error('{!! (implode('<br>',$errors->all())) !!}');                
+            });            
+        @endif
 
-    <script> 
-    
-    const params = new URLSearchParams(window.location.search);
-    //var date1 = document.getElementById('day').innerHTML = (params.get('date'));
+        ////////////////////
+        //動的プルダウンの設定//
+        ////////////////////
 
-    //ジャンルの値と、それに対応するカテゴリ一覧を格納しておく
-    const categoryList = 
-          {
-            "基礎課題": ["01_はじめに", "02_HTML/CSS", "03_Git", "04_ポートフォリオ", "05_PHP", "06_JavaScript", "07_SQL"],
-            "応用課題": ["01_Twitterクローン開発初級", "02_Twitterクローン開発", "03_Laravel"],
-            "開発課題": ["01_チーム開発", "02_自主制作"]
-          };
-    const lessonList = 
-          {
-            "01_はじめに": ["No1", "No2"],
-            "02_HTML/CSS": ["No1", "No2", "No3", "No4"],
-            "03_Git": ["No1", "No2"],
-            "04_ポートフォリオ": ["No1", "No2", "No3", "No4","No5"],
-            "05_PHP": ["No1", "No2", "No3", "No4","No5", "No6", "No7"],
-            "06_JavaScript": ["No1", "No2", "No3", "No4","No5"],
-            "07_SQL": ["No1", "No2", "No3", "No4","No5", "No6"],
-            "01_Twitterクローン開発初級": ["No1", "No2", "No3", "No4", "No5" ],
-            "02_Twitterクローン開発": ["No1", "No2", "No3", "No4", "No5", "No6", "No7", "No8", "No9", "No10", "No11", "No12", "No13", "No14", "No15"],
-            "03_Laravel": ["No1", "No2", "No3", "No4","No5"],
-            "01_チーム開発": ["No1", "No2", "No3"],
-            "02_自主制作": ["No1", "No2", "No3"]
-          };
+        //ジャンルの値と、それに対応するカテゴリ一覧を格納しておく
+        const categoryList = 
+            {
+                "基礎課題": ["01_はじめに", "02_HTML／CSS", "03_Git", "04_ポートフォリオ", "05_PHP", "06_JavaScript", "07_SQL"],
+                "応用課題": ["01_Twitterクローン開発初級", "02_Twitterクローン開発", "03_Laravel"],
+                "開発課題": ["01_チーム開発", "02_自主制作"]
+            };
 
-    //選択されたジャンルを受け取って処理をする -- [4]
-    function setCategoryOptions(selectedGenre){
-      const selectCategoryName = document.getElementById('category_name'); //2つめのセレクトボックスを取得し
-      selectCategoryName.disabled = false; //選択可能な状態にする
-      selectCategoryName.options.length = 1; 
-      
-      //選択されたジャンルのメニュー一覧に対して処理をする
-      categoryList[selectedGenre].forEach((value, index) => {
-        const option = document.createElement('option'); //option要素を新しく作る
-        option.value = value; //option要素の値に、メニューを識別できる番号を指定する
-        option.innerHTML = value; //ユーザー向けの表示としてメニュー名を指定する
-        selectCategoryName.appendChild(option); //セレクトボックスにoption要素を追加する
-      });
+        const lessonList = 
+            {
+                "01_はじめに": ["No1", "No2"],
+                "02_HTML／CSS": ["No1", "No2", "No3", "No4"],
+                "03_Git": ["No1", "No2"],
+                "04_ポートフォリオ": ["No1", "No2", "No3", "No4","No5"],
+                "05_PHP": ["No1", "No2", "No3", "No4","No5", "No6", "No7"],
+                "06_JavaScript": ["No1", "No2", "No3", "No4","No5"],
+                "07_SQL": ["No1", "No2", "No3", "No4","No5", "No6"],
+                "01_Twitterクローン開発初級": ["No1", "No2", "No3", "No4", "No5" ],
+                "02_Twitterクローン開発": ["No1", "No2", "No3", "No4", "No5", "No6", "No7", "No8", "No9", "No10", "No11", "No12", "No13", "No14", "No15"],
+                "03_Laravel": ["No1", "No2", "No3", "No4","No5"],
+                "01_チーム開発": ["No1", "No2", "No3"],
+                "02_自主制作": ["No1", "No2", "No3"]
+            };
 
-      if(document.getElementById('lesson_number').options.length >1 ){ //レッスンナンバーが既に選択されているとき
-        var selectedCategory = selectCategoryName.selectedIndex //表示されているカテゴリーを取得
-        setLessonOptions(selectCategoryName[selectedCategory].value); //カテゴリーに合わせてレッスンナンバーのプルダウンを修正
-      }
-    }
+        //選択されたジャンルを受け取って処理をする -- [4]
+        function setCategoryOptions(selectedGenre){
+            const selectCategoryName = document.getElementById('category_name'); //2つめのセレクトボックスを取得し
+            selectCategoryName.disabled = false; //選択可能な状態にする
+            selectCategoryName.options.length = 1; //オプションをリセット
+            
+            //選択されたジャンルのメニュー一覧に対して処理をする
+            categoryList[selectedGenre].forEach((value, index) => {
+                const option = document.createElement('option'); //option要素を新しく作る
+                option.value = value; //option要素の値に、メニューを識別できる番号を指定する
+                option.innerHTML = value; //ユーザー向けの表示としてメニュー名を指定する
+                selectCategoryName.appendChild(option); //セレクトボックスにoption要素を追加する
+            });
 
-    function setLessonOptions(selectedLesson){
-      const selectLessonNumber = document.getElementById('lesson_number'); //3つめのセレクトボックスを取得し
-      selectLessonNumber.disabled = false; //選択可能な状態にする
-      selectLessonNumber.options.length = 1; 
-      //選択されたジャンルのメニュー一覧に対して処理をする
-      lessonList[selectedLesson].forEach((value, index) => {
-        const option = document.createElement('option'); //option要素を新しく作る
-        option.value = value; //option要素の値に、メニューを識別できる番号を指定する
-        option.innerHTML = value; //ユーザー向けの表示としてメニュー名を指定する
-        selectLessonNumber.appendChild(option); //セレクトボックスにoption要素を追加する
-      });
-    }
-    
-    const genreSelect = document.getElementById('genre'); //ジャンルを選ぶためのセレクトボックスを指定 -- [2]
-    const categorySelect = document.getElementById('category_name'); //ジャンルを選ぶためのセレクトボックスを指定 -- [2]
+            if(document.getElementById('lesson_number').options.length >1 ){ //レッスンナンバーが既に選択されているとき
+                var selectedCategory = selectCategoryName.selectedIndex //表示されているカテゴリーを取得
+                setLessonOptions(selectCategoryName[selectedCategory].value); //カテゴリーに合わせてレッスンナンバーのプルダウンを修正
+            }
+        }
 
-    //なんらかのジャンルが選択されたら（change）、処理を行う -- [3]
-    genreSelect.addEventListener('change', (e) => {
-      setCategoryOptions(e.target.value);  //選択された料理ジャンルを引数として関数に渡す
-     //※e.target.valueはgenreSelectで選択された値
-    })
+        function setLessonOptions(selectedLesson){
+            const selectLessonNumber = document.getElementById('lesson_number'); //3つめのセレクトボックスを取得し
+            selectLessonNumber.disabled = false; //選択可能な状態にする
+            selectLessonNumber.options.length = 1; //オプションをリセット
+            //選択されたジャンルのメニュー一覧に対して処理をする
+            lessonList[selectedLesson].forEach((value, index) => {
+                const option = document.createElement('option'); //option要素を新しく作る
+                option.value = value; //option要素の値に、メニューを識別できる番号を指定する
+                option.innerHTML = value; //ユーザー向けの表示としてメニュー名を指定する
+                selectLessonNumber.appendChild(option); //セレクトボックスにoption要素を追加する
+            });
+        }
+        
+        const genreSelect = document.getElementById('genre'); //ジャンルを選ぶためのセレクトボックスを指定 -- [2]
+        const categorySelect = document.getElementById('category_name'); //ジャンルを選ぶためのセレクトボックスを指定 -- [2]
 
-    //なんらかのジャンルが選択されたら（change）、処理を行う -- [3]
-    categorySelect.addEventListener('change', (e) => {
-      setLessonOptions(e.target.value);  //選択された料理ジャンルを引数として関数に渡す
-     //※e.target.valueはgenreSelectで選択された値
-    })
+        //なんらかのジャンルが選択されたら（change）、処理を行う -- [3]
+        genreSelect.addEventListener('change', (e) => {
+            setCategoryOptions(e.target.value);  //選択されたジャンルを引数として関数に渡す
+            //※e.target.valueはgenreSelectで選択された値
+        })
 
+        //なんらかのカテゴリが選択されたら（change）、処理を行う -- [3]
+        categorySelect.addEventListener('change', (e) => {
+            setLessonOptions(e.target.value);  //選択されたカテゴリを引数として関数に渡す
+        })
 
+        //バリデーションエラー時の対応
+        if(@json(old('genre'))){
+            //ジャンルが入力されていた場合
+            //$(genreSelect).ready(function() {
+                document.getElementById("genre").value = "{{old('genre')}}" //oldのgenreの値をセット
+                setCategoryOptions("{{old('genre')}}"); //
+            //});
+            if(@json(old('category_name'))){ 
+                //ジャンルとカテゴリ入力されていた場合
+                //$(categorySelect).ready(function() {
+                    document.getElementById("category_name").value = "{{old('category_name')}}"
+                    setLessonOptions("{{old('category_name')}}"); 
+                //});
+            }
+        }
     </script>
     <style>
       body {
