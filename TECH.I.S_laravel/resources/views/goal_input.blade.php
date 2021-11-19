@@ -94,15 +94,18 @@
         </div>
     </footer>
     <script>
+
         ///////////////////
         //バリデーション処理//
         ///////////////////
 
         //メッセージ表示場所、時間の設定
+
         toastr.options = {
           "positionClass": "toast-top-center",
           "timeOut": "1500",
         };
+<<<<<<< HEAD
         //登録、メモ入力完了メッセージ
         @if (session('flash_message'))
             $(function () {
@@ -206,6 +209,7 @@
                 //});
             }
         }
+
     </script>
     <style>
       body {
