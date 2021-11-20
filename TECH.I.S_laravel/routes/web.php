@@ -14,6 +14,8 @@ use App\Http\Controllers\TechController;
 |
 */
 
+
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -22,7 +24,8 @@ Route::get('/',[TechController::class,'index']);
 Route::get('Login', [TechController::class,'getLog']);
 Route::get('New_sain', [TechController::class,'getNew']);
 Route::get('Carender', [TechController::class,'getCarender']);
-//Route::get('goal_input', [TechController::class,'getgoal']);
+
+//目標・実績・メモ入力機能
 Route::post('goal_input/{user_id}/{date}', [App\Http\Controllers\Learning_planController::class, 'edit']);
 Route::get('goal_input', [App\Http\Controllers\Learning_planController::class, 'index']);
 Route::post('plan_delete/{learningplan}', [App\Http\Controllers\Learning_planController::class, 'deletePlan']);
@@ -32,3 +35,12 @@ Route::post('memo_delete', [App\Http\Controllers\MemoController::class, 'delete'
 Route::get('event_input', [App\Http\Controllers\EventController::class, 'index']);
 Route::post('event_edit', [App\Http\Controllers\EventController::class, 'edit']);
 Route::post('event_delete/{event_delete}', [App\Http\Controllers\EventController::class, 'delete']);
+
+
+//DBへのアドレス・PASSの登録 //
+Route::post('/new_add',[TechController::class,'add']);
+Route::get('/new_add',[TechController::class,'add']);
+Route::post('thack',[TechController::class,'chtecktest']);
+
+
+

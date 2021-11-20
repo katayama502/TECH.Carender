@@ -13,7 +13,9 @@ class CreateLearningPlansTable extends Migration
      */
     public function up()
     {
-        Schema::create('learning_plans', function (Blueprint $table) {
+
+        Schema::create('learning-plans', function (Blueprint $table) {
+
             $table->integer('id')->autoIncrement();
             $table->integer('user_id')->index();
             $table->date('A_1_1')->index()->nullable();
@@ -92,4 +94,5 @@ class CreateLearningPlansTable extends Migration
     {
         Schema::dropIfExists('learning-plans');
     }
+
 }
