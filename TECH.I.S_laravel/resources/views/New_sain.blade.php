@@ -11,6 +11,10 @@
     <div id="back">
     <div class="container">
         <h1>新規登録画面</h1>
+
+        <form action="new_add" method="post">
+        @csrf
+
         <div class="item">
             <img class="item1"src="img/TECH.png">
         </div>
@@ -19,18 +23,29 @@
         </div>
         <div class="item">       
             <input id="mailaddles" type="text"　 name="Introduction_name" value="">
+
+            @if (!empty($errors->first('Introduction_name')))
+            <p class="error_message">{{$errors->first('Introduction_name')}}</p>
+            @endif
+
         </div>
         <br>
         <div class="item">
             <label for="pass">パスワード</label>
         </div>
         <div class="item"> 
-            <input id="pass" type="text"　 name="Introduction_name" value="">
+
+            <input id="pass" type="password"　 name="Introduction_pass" value="">
+            @if (!empty($errors->first('Introduction_pass')))
+            <p class="error_message">{{$errors->first('Introduction_pass')}}</p>
+            @endif
         </div>
         <br>
         <div class="item">
-            <a type="submit" class="btn btn--yellow btn--cubic"href="{{ url('/') }}">登録</a>
+            <button type="submit" class="btn btn--yellow btn--cubic">登録</button>
         </div>
+        </form>
+
     </div>
 </div>
 </body>
