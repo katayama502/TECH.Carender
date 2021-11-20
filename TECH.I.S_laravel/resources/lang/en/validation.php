@@ -111,7 +111,7 @@ return [
         ],
         'end_time' => [
             'required' =>'終了時刻を入力してください',
-
+        ],
         'Introduction_name' => [
             'regex' => '正しくメールアドレスを入力してください。',
         ],

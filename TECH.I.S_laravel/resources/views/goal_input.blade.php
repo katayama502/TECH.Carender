@@ -105,7 +105,7 @@
           "positionClass": "toast-top-center",
           "timeOut": "1500",
         };
-<<<<<<< HEAD
+
         //登録、メモ入力完了メッセージ
         @if (session('flash_message'))
             $(function () {
