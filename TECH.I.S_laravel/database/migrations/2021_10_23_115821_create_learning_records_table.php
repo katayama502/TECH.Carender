@@ -13,7 +13,9 @@ class CreateLearningRecordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('learning_records', function (Blueprint $table) {
+
+        Schema::create('learning-records', function (Blueprint $table) {
+
             $table->integer('id')->autoIncrement();
             $table->integer('user_id')->index();
             $table->date('A_1_1')->index()->nullable();
@@ -93,4 +95,3 @@ class CreateLearningRecordsTable extends Migration
         Schema::dropIfExists('learning-records');
     }
 }
-

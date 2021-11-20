@@ -16,9 +16,6 @@ use App\Http\Controllers\TechController;
 
 
 
-
-
-
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -30,7 +27,9 @@ Route::get('Carender', [TechController::class,'getCarender']);
 Route::get('goal_input', [TechController::class,'getgoal']);
 
 
-/**
- * カレンダー表示 /views/calendar/index.blade.php
- */
-Route::get('/calendar',[App\Http\Controllers\CalendarController::class, 'setEvents']) ;
+//DBへのアドレス・PASSの登録 //
+Route::post('/new_add',[TechController::class,'add']);
+Route::get('/new_add',[TechController::class,'add']);
+Route::post('thack',[TechController::class,'chtecktest']);
+
+
