@@ -31,7 +31,9 @@ class TechController extends Controller
 
   public function getgoal(Request $request){
     $data = $request->input('date');
-    return view('goal_input')->with('day', $data);
+    return view('goal_input',[
+      'date' => $data,
+    ]);
   }
 
 //DBへのアドレス・PASSの登録 //
