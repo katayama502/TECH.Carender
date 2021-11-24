@@ -44,3 +44,15 @@
 </div>
 </body>
 </html>
+<script>
+    toastr.options = {
+          "positionClass": "toast-top-center",
+          "timeOut": "2000",
+    };
+    @if (session('flash_message'))
+        $(function () {
+            toastr.error('{{ session('flash_message') }}');              
+        });
+    @endif
+  
+</script>
