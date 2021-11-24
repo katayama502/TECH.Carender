@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 // use resources\views;
 use Illuminate\Http\Request;
+
 use App\Models\Administrators;
 use App\Models\learning_plan;
 use App\Models\learning_record;
 use App\Models\User;
+
 
 class TechController extends Controller
 {
@@ -22,9 +24,11 @@ class TechController extends Controller
     return view('New_sain');
   }
 
+
   public function getCarender(){
     return view('Carender');
   }
+
 
   public function getAdmin(){
     return view('start_admin');
@@ -64,6 +68,8 @@ class TechController extends Controller
           'user_id' => $sain_User_name,
         ];
           User::insert($date);
+
+      
           learning_plan::insert($date_user);
           learning_record::insert($date_user);
           return redirect('/');
@@ -77,6 +83,7 @@ class TechController extends Controller
    
     //バリデーション//
     $request->validate([
+
       'login_User_name' => 'required',
       'login_User_pass' => 'required',
     ]);
@@ -92,6 +99,7 @@ class TechController extends Controller
     $pass=$youser_date->password ;
 
     if($pass == $login_User_pass){
+
       return redirect('Carender');
     }else{
       return redirect('Login');
@@ -100,6 +108,7 @@ class TechController extends Controller
     }
     
     
+
 //管理者新規登録 //
 
 public function admin_add(Request $request){
@@ -154,5 +163,6 @@ public function admin_check(Request $request){
 
 
 }
+
 
 
