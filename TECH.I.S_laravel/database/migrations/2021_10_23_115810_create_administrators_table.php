@@ -13,11 +13,12 @@ class CreateAdministratorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('admin_memos', function (Blueprint $table) {
+
+
+        Schema::create('administrators', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
-            $table->integer('user_id')->index();
-            $table->string('body',140)->index();
-            $table->date('date')->index();
+            $table->string('email',254)->unique();
+            $table->string('password',128);
             $table->datetime('created_at')->useCurrent();
             $table->datetime('updated_at')->useCurrent();
         });
@@ -30,7 +31,8 @@ class CreateAdministratorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admin_memos');
-    }
 
+        Schema::dropIfExists('administrators');
+    }
 }
+
