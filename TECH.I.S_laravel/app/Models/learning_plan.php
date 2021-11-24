@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Learning_plan extends Model
 {
     use HasFactory;
@@ -72,4 +73,5 @@ class Learning_plan extends Model
         "開発課題_02_自主制作_No2" => "C_2_2",
         "開発課題_02_自主制作_No3" => "C_2_3",
     ];    
+
 }
