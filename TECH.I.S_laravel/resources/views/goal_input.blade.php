@@ -238,7 +238,8 @@
       }
 
       .plan-record-wrapper{
-        height: 300px;
+        /*height: 300px;*/
+        margin-bottom: 10px;
       }
 
       .plan-record-wrapper .learning-item{
@@ -261,12 +262,13 @@
       }
 
       .input-wrapper {
-        height: 170px;
+        /*height: 170px;*/
+        margin-bottom: 10px;
       }
 
       .input-wrapper .item-input{
         flex: auto;
-        width: 50%;
+        width: 100%;
         padding: 0 10px;
         text-align: center;
       }
@@ -289,7 +291,8 @@
       }
 
       .memo-wrapper{
-        height: 170px
+        /*height: 170px*/
+        margin-bottom: 10px;
       }
 
       .memo-wrapper h2{
@@ -350,7 +353,49 @@
         position: relative;
         top: 5px;
       }
+      @media screen and (max-width: 767px){
+        body{
+            margin-top: 0;
+        }
+        .container {
+            flex-wrap: wrap;
+        }
+
+        .scrollbox{
+            height: 100px;               /* 横幅を200pxに指定 */
+        }
+
+        .input-wrapper .item-input{
+            width: 25%;
+        }
+
+        .memo-wrapper .memo-input{
+            width: 25%;
+        }
+      }
       
+      @media screen and (max-width: 500px){
+        header .container{
+              /* positionプロパティをfixedに、topを0に指定してください */
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            z-index: 10;
+            width :100%;
+            background-color: white;
+        }
+        .plan-record-wrapper .learning-item{
+            width: 100%;
+        }
+            
+        .input-wrapper .item-input{
+            width: 100%;
+        }
+
+        .memo-wrapper .memo-input{
+            width: 100%;
+        }
+      }
     </style>
 </body>
 </html>
