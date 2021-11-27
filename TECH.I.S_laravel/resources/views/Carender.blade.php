@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset='utf-8' />
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="js/packages/core/main.css" rel="stylesheet"></script>
 <link href='js/packages/daygrid/main.css' rel='stylesheet' />
 <link href='js/packages/timegrid/main.css' rel='stylesheet' />
@@ -27,6 +27,17 @@
     max-width: 900px;
     margin: 0 auto;
   }
+  /*@media screen (max-width: 500px;){
+  .fc table {
+    width: 100px;
+    box-sizing: border-box;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em;
+    overflow: hidden scroll;
+    }
+  }*/
 
 </style>
 </head>
