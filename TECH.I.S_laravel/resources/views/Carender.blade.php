@@ -27,17 +27,37 @@
     max-width: 900px;
     margin: 0 auto;
   }
-  /*@media screen (max-width: 500px;){
-  .fc table {
-    width: 100px;
-    box-sizing: border-box;
-    table-layout: fixed;
-    border-collapse: collapse;
-    border-spacing: 0;
-    font-size: 1em;
-    overflow: hidden scroll;
+  
+
+  @media screen and (max-width: 767px){
+    .fc-toolbar h2 {
+        font-size: 1.5em;
+        margin: 0;
     }
-  }*/
+    .fc-button{
+        font-size: 0.75em;
+    }
+
+   
+  }
+
+  @media screen and (max-width: 500px){
+    .fc-toolbar h2 {
+        font-size: 1em;
+        margin: 0;
+    }
+    .fc-button{
+        font-size: 0.5em;
+    }
+
+    .fc table{
+        font-size: 0.3em;
+        width: 767px;
+    }
+    
+    
+
+  }
 
 </style>
 </head>
