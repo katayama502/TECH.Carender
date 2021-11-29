@@ -10,5 +10,4 @@ class Administrators extends Model
     use HasFactory;
 
     
-    
 }

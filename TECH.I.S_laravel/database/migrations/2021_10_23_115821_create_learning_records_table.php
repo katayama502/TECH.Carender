@@ -14,6 +14,8 @@ class CreateLearningRecordsTable extends Migration
     public function up()
     {
 
+           
+
         Schema::create('learning_records', function (Blueprint $table) {
 
             $table->integer('id')->autoIncrement();
@@ -80,6 +82,7 @@ class CreateLearningRecordsTable extends Migration
             $table->date('C_2_1')->index()->nullable();
             $table->date('C_2_2')->index()->nullable();
             $table->date('C_2_3')->index()->nullable();
+
             $table->datetime('created_at')->useCurrent();
             $table->datetime('updated_at')->useCurrent();
         });

@@ -6,9 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-    <title>TECH.I.S_システムログイン</title>
+
+    <title>TECH.I.S_システムログイン画面</title>
 </head>
 <body>
+    
 
     <div id="back">
     <div class="container">
@@ -25,9 +27,9 @@
         </div>
         <div class="item">       
 
-            <input id="mailaddles" type="text"　 name="Introduction_name2" value="">
-            @if (!empty($errors->first('Introduction_name2')))
-            <p class="error_message">{{$errors->first('Introduction_name2')}}</p>
+            <input id="mailaddles" type="text"　 name="login_User_name" value="">
+            @if (!empty($errors->first('login_User_name')))
+            <p class="error_message">{{$errors->first('login_User_name')}}</p>
             @endif
 
         </div>
@@ -37,9 +39,10 @@
         </div>
         <div class="item"> 
 
-            <input id="pass" type="password"　 name="Introduction_pass2" value="">
-            @if (!empty($errors->first('Introduction_pass2')))
-            <p class="error_message">{{$errors->first('Introduction_pass2')}}</p>
+            <input id="pass" type="password"　 name="login_User_pass" value="">
+            @if (!empty($errors->first('login_User_pass')))
+            <p class="error_message">{{$errors->first('login_User_pass')}}</p>
+
             @endif
         </div>
         <br>
