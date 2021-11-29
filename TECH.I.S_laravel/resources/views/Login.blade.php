@@ -23,7 +23,7 @@
             <img class="item1" src="img/TECH.png">
         </div>
        
-        <form action="thack" method="post">
+        <form action="chteck" method="post">
         @csrf
         <div class="item">
             <label for="mailaddles">メールアドレス</label>

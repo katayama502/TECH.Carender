@@ -20,10 +20,22 @@
         <a href="{{ url('graph_development') }}" class="btn btn--yellow btn--cubic">開発課題詳細</a>
 </div>
 <div class="item">
-        <a href="{{ url('Calendar') }}" class="btn btn--yellow btn--cubic">戻る</a>
+        <a href="{{ url('Not_Calendar') }}" class="btn btn--yellow btn--cubic">戻る</a>
 </div>
 </div>
+<?php
+
+// $user_records = learning_records::where('user_id',3) -> first();
+// $id_pass_1=$user_records->A_1_1;	
+// $id_pass_2=$user_records->A_1_2;
+
+$count=3;
+?>
 <script>//以下がグラフデータ
+
+　　　
+
+
 	var ctx = document.getElementById('myChart').getContext('2d');
     
 	var chart = new Chart(ctx, {
@@ -32,7 +44,7 @@
 			labels: ['基礎課題', '応用課題', '開発課題'],
 			datasets: [{
 				label: 'カリキュラム進捗確認グラフ',
-				data: [20, 10, 10,5,100],
+				data: [<?php echo $count ?>],
 				backgroundColor: 'rgb(0, 0, 255)',
 				borderColor: 'rgb(0, 0, 255)'
 			}]
