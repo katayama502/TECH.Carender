@@ -32,4 +32,5 @@ class CreateMemosTable extends Migration
     {
         Schema::dropIfExists('memos');
     }
+
 }

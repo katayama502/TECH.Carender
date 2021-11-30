@@ -14,16 +14,21 @@ use App\Http\Controllers\TechController;
 |
 */
 
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
+
 //ユーザー用//
+
 Route::get('/',[TechController::class,'index']);
 Route::get('access', [TechController::class,'getLog']);
 Route::get('New_sain', [TechController::class,'getNew']);
+
 Route::get('Calendar', [TechController::class,'getCalendar']);
 Route::get('Not_Calendar', [TechController::class,'getCalendar_not']);
+
 Route::get('goal_input', [TechController::class,'getgoal']);
 Route::get('Login_mv', [TechController::class,'Log_mv']);
 // Route::get('New_sain_mv', [TechController::class,'New_mv']);
@@ -46,8 +51,10 @@ Route::post('admin_add',[TechController::class,'admin_add_1']);
 Route::get('admin_add',[TechController::class,'admin_add_1']);
 Route::post('/admin_check',[TechController::class,'admin_check']);
 
+
 //進捗確認グラフ//
 Route::get('graph_main', [TechController::class,'main']);
 Route::get('graph_basics', [TechController::class,'basics']);
 Route::get('graph_application', [TechController::class,'application']);
 Route::get('graph_development', [TechController::class,'development']);
+

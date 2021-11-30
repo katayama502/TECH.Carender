@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 // use resources\views;
 use Illuminate\Http\Request;
+
 use App\Models\Administrators;
 use App\Models\learning_plan;
 use App\Models\learning_record;
@@ -39,6 +40,7 @@ class TechController extends Controller
     session()->flash('flash_message', '登録に失敗しました');
     return view('New_sain');
   }
+
 
 
 
@@ -82,6 +84,7 @@ class TechController extends Controller
       return view('');
     }
     return view('Calendar');
+
   }
 
 
@@ -163,6 +166,7 @@ class TechController extends Controller
       $date = [
           'email' => $sain_User_name,
           'password' => $sain_User_pass,
+
       ];
       User::insert($date);
 
@@ -176,6 +180,7 @@ class TechController extends Controller
         learning_plan::insert($date_user);
         learning_record::insert($date_user);
         return redirect('/');
+
 }
 
 
@@ -187,6 +192,8 @@ class TechController extends Controller
 //ログイン認証//
   public function chtecktest(Request $request){
    
+
+
     $login_User_name = $request->login_User_name;
     $login_User_pass = $request->login_User_pass;
 
@@ -218,8 +225,10 @@ class TechController extends Controller
     $pass=$user->password ;
 
     if($pass == $login_User_pass){
+
       session(['user_id'=> $user->id]);
       return redirect('Calendar');
+
     }else{
       session()->flash('flash_message', 'ログインに失敗しました');
       $request->validate([
@@ -232,8 +241,6 @@ class TechController extends Controller
     }
     
     
-
-
 
 
 //管理者新規登録 //
@@ -321,5 +328,6 @@ public function admin_check(Request $request){
 
 
 }
+
 
 
