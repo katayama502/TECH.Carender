@@ -14,7 +14,10 @@ class CreateLearningPlansTable extends Migration
     public function up()
     {
 
-        Schema::create('learning-plans', function (Blueprint $table) {
+           
+ 
+
+        Schema::create('learning_plans', function (Blueprint $table) {
 
             $table->integer('id')->autoIncrement();
             $table->integer('user_id')->index();
@@ -80,6 +83,7 @@ class CreateLearningPlansTable extends Migration
             $table->date('C_2_1')->index()->nullable();
             $table->date('C_2_2')->index()->nullable();
             $table->date('C_2_3')->index()->nullable();
+
             $table->datetime('created_at')->useCurrent();
             $table->datetime('updated_at')->useCurrent();
         });

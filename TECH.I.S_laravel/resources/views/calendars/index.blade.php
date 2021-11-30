@@ -17,13 +17,60 @@
             max-width: 900px;
             margin: 0 auto;
         }
+
+        ul{
+            max-width: 858px;
+            margin: 0 auto;
+            text-align: right;
+        }
+
+
+        .event-color{
+            display: inline-block;
+            text-align: right;
+            background-color:#FF0000;
+            color:white;
+            padding: 5px;
+            border-radius: 5px;
+            
+        }
+
+        .plan-color{
+            display: inline-block;
+            margin-left: auto;
+            background-color:#AAAAAA;
+            color:white;
+            padding: 5px;
+            border-radius: 5px;
+            
+        }
+
+        .goal-color{
+            display: inline-block;
+            margin-left: auto;
+            background-color:#00ABAE;
+            color:white;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        li{
+            list-style: none;
+            text-align: right;
+        }
+
     </style>
 </head>
 
 <body>
-    <a href="/" class="fc-dayGridMonth-button fc-button fc-button-primary fc-button-active">ログアウト</a>
-
-    
+    <ul> 
+        <li style="font-weight: bold;">表示内容　　　</li>
+        <li class='event-color'>イベント</li>
+        <li class='plan-color'>予定</li>
+        <li class="goal-color">実績</li>
+        <li>　</li>
+        <a href="/logout" button type="button" class="logout fc-button fc-button-primary fc-button-active">ログアウト</a>
+    </ul>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -876,6 +923,7 @@
                 color: recordsColor,
             };
             setRecords.push(eventRecordsB_3_5);
+
         
         };
 

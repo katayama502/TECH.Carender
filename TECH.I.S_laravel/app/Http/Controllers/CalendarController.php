@@ -32,10 +32,23 @@ class CalendarController extends Controller
         );
     }
 
-    public function logout()
-    {
-        return ;
 
+    public function getDate()
+    {
+
+    }
+
+    public function getLogout(Request $request)
+    {
+        // ユーザー情報をセッションから削除
+        // guardの中身を要確認。
+        Auth::guard('user_id')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
 
     }
 

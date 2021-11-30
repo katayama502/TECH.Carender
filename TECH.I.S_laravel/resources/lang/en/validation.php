@@ -51,12 +51,12 @@ return [
     'min'                  => [
         'numeric' => ':attributeは:min以上にしてください。',
         'file'    => ':attributeは:min KB以上のファイルにしてください。.',
-        'string'  => ':英数字・大文字・小文字を含む８文字以上のパスを設定してください。',
+        'string'  => 'パスワードを半角英数字で入力してください!',
         'array'   => ':attributeは:min個以上にしてください。',
     ],
     'not_in'               => '選択された:attributeは正しくありません。',
     'numeric'              => ':attributeは数字にしてください。',
-    'regex'                => ':英数字・大文字・小文字を含む８文字以上のパスを設定してください。',
+    'regex'                => 'パスワードを半角英数字で入力してください!',
     'required'             => ':attribute',
     'required_if'          => ':otherが:valueの時、:attributeは必須です。',
     'required_with'        => ':valuesが存在する時、:attributeは必須です。',
@@ -72,7 +72,7 @@ return [
     ],
     'string'               => ':attributeは文字列にしてください。',
     'timezone'             => ':attributeは正しいタイムゾーンをしていしてください。',
-    'unique'               => ':attributeは既に存在します。',
+    'unique'               => '既存のメールアドレスは既に登録されています。',
     'url'                  => ':attributeを正しい書式にしてください。',
 
     /*
@@ -107,10 +107,15 @@ return [
     */
 
     'attributes' => [
-        'Introduction_name2' => 'メールアドレスを入力してください。',
-        'Introduction_pass2' =>'パスワードを入力してください。',
-        'Introduction_name' => '正しくメールアドレスを入力してください。',
-        'Introduction_pass' =>'パスワードを入力してください。',
+        'login_User_name' => 'メールアドレスを入力してください。',
+        'login_User_pass' =>'パスワードを入力してください。',
+        'sain_User_name' => '正しくメールアドレスを入力してください。',
+        'sain_User_pass' =>'パスワードを入力してください。',
+
+        'admin_sain_name' => 'メールアドレスを入力してください。',
+        'admin_sain_pass' =>'パスワードを入力してください。',
+        'admin_login_name' => '正しくメールアドレスを入力してください。',
+        'admin_login_pass' =>'パスワードを入力してください。',
     ],
 
     
