@@ -44,6 +44,7 @@ Route::get('admin', [TechController::class,'getAdmin']);
 Route::get('login_admin', [TechController::class,'getAdmin_login']);
 Route::get('sain_admin', [TechController::class,'getAdmin_sain']);
 
+
 //DBへのアドレス・PASSの登録 //
 Route::post('/new_add',[TechController::class,'add']);
 // Route::get('/new_add',[TechController::class,'add']);
