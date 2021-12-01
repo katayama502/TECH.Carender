@@ -25,6 +25,7 @@ Route::get('Login', [TechController::class,'getLog']);
 Route::get('New_sain', [TechController::class,'getNew']);
 Route::get('Carender', [TechController::class,'getCarender']);
 
+//予定・実績・イベント登録
 Route::post('goal_input/{user_id}/{date}', [App\Http\Controllers\Learning_planController::class, 'edit']);
 Route::get('goal_input', [App\Http\Controllers\Learning_planController::class, 'index']);
 Route::post('plan_delete/{learningplan}', [App\Http\Controllers\Learning_planController::class, 'deletePlan']);
