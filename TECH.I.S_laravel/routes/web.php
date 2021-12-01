@@ -15,15 +15,18 @@ use App\Http\Controllers\TechController;
 */
 
 
-
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+
+//ユーザー用//
 
 Route::get('/',[TechController::class,'index']);
 Route::get('Login', [TechController::class,'getLog']);
 Route::get('New_sain', [TechController::class,'getNew']);
 Route::get('Carender', [TechController::class,'getCarender']);
+
 
 // 目標・実績・イベント編集画面
 Route::post('goal_input/{user_id}/{date}', [App\Http\Controllers\Learning_planController::class, 'edit']);
@@ -36,7 +39,17 @@ Route::get('event_input', [App\Http\Controllers\EventController::class, 'index']
 Route::post('event_edit', [App\Http\Controllers\EventController::class, 'edit']);
 Route::post('event_delete/{event_delete}', [App\Http\Controllers\EventController::class, 'delete']);
 
+//管理者用//
+Route::get('admin', [TechController::class,'getAdmin']);
+Route::get('login_admin', [TechController::class,'getAdmin_login']);
+Route::get('sain_admin', [TechController::class,'getAdmin_sain']);
+
 //DBへのアドレス・PASSの登録 //
 Route::post('/new_add',[TechController::class,'add']);
-Route::get('/new_add',[TechController::class,'add']);
+// Route::get('/new_add',[TechController::class,'add']);
 Route::post('thack',[TechController::class,'chtecktest']);
+
+//管理者新規追加//
+Route::post('/admin_add',[TechController::class,'admin_add']);
+Route::post('/admin_check',[TechController::class,'admin_check']);
+
