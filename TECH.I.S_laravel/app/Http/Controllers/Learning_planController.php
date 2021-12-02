@@ -78,9 +78,10 @@ class Learning_planController extends Controller
         if ($memo === null) {
             $memoResponse = "";
         }else{
-        $memo = Memo::where('date','2020-10-30')->where('user_id',1)->value('body');
-        $memoResponse = $memo;
+            $memo = Memo::where('date','2020-10-30')->where('user_id',1)->value('body');
+            $memoResponse = $memo;
         }
+        
         return view('goal_input', [
             'learningplans' => $planResponse,
             'learningrecords' => $recordResponse,
