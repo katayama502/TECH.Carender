@@ -14,6 +14,10 @@
 <script src="js/packages/timegrid/main.js"></script>
 <script src="js/packages/list/main.js"></script>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 <style>
 
   body {
@@ -33,6 +37,7 @@
 <form method="POST">
 <body>
   <a href="{{ url('/') }}" class="btn btn--yellow btn--cubic">ログアウト</a>
+  <a href="{{ url('graph_main') }}" class="btn btn--yellow btn--cubic">進捗確認</a>
   <div id='calendar'></div>
 <script>
 
@@ -63,8 +68,7 @@
     },
       locale:'ja',
       dateClick: function(info) {
-      // window.location.href='http://localhost/TECH.Carender/goal_input.html?date= ' + info.dateStr;
-
+      
       window.location.href="{{ url('goal_input') }}";
       },
       events: [
@@ -129,3 +133,17 @@
 </body>
 </form>
 </html>
+
+
+<script>
+    toastr.options = {
+          "positionClass": "toast-top-center",
+          "timeOut": "2000",
+    };
+    @if (session('flash_message'))
+        $(function () {
+            toastr.success('{{ session('flash_message') }}');              
+        });
+    @endif
+  
+</script>
