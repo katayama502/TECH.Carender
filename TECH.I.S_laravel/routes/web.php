@@ -15,10 +15,15 @@ use App\Http\Controllers\TechController;
 */
 
 
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
+
+
+// カレンダー表示 /views/calendar/index.blade.php
+Route::get('/calendar',[App\Http\Controllers\CalendarController::class, 'setEvents']) ;
 
 //ユーザー用//
 
@@ -51,10 +56,16 @@ Route::post('admin_add',[TechController::class,'admin_add_1']);
 Route::get('admin_add',[TechController::class,'admin_add_1']);
 Route::post('/admin_check',[TechController::class,'admin_check']);
 
+// ログアウト
+Route::get('/logout',[App\Http\Controllers\CalendarController::class, 'getLogout']);
+
+// メール送付
+Route::get('/mail',[App\Http\Controllers\MailSendController::class, 'send']);
 
 //進捗確認グラフ//
 Route::get('graph_main', [TechController::class,'main']);
 Route::get('graph_basics', [TechController::class,'basics']);
 Route::get('graph_application', [TechController::class,'application']);
 Route::get('graph_development', [TechController::class,'development']);
+
 
