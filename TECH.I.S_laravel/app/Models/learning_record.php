@@ -10,4 +10,5 @@ class Learning_record extends Model
 {
     use HasFactory;
 
+
 }

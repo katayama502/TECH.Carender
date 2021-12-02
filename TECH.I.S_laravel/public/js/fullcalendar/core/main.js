@@ -4490,8 +4490,8 @@ Docs & License: https://fullcalendar.io/
         editable: false,
         // nowIndicator: false,
         scrollTime: '10:00:00',
-        minTime: '00:00:00',
-        maxTime: '24:00:00',
+        minTime: '10:00:00',
+        maxTime: '23:00:00',
         showNonCurrentDates: true,
         // event ajax
         lazyFetching: true,
@@ -4599,7 +4599,7 @@ Docs & License: https://fullcalendar.io/
             list: 'list'
         },
         weekLabel: 'W',
-        allDayText: '終日',
+        allDayText: '予定/実績',
         eventLimitText: 'more',
         noEventsMessage: 'No events to display'
     };

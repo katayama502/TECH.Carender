@@ -472,7 +472,7 @@ tr:first-child > td > .fc-day-grid-event {
 
 .fc-day-grid-event .fc-content {
   /* force events to be one-line tall */
-  white-space: nowrap;
+  white-space: normal;
   overflow: hidden;
 }
 
@@ -657,6 +657,7 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  
 }
 
 .fc-button:focus {
@@ -694,6 +695,7 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
   font-size: 1em;
   line-height: 1.5;
   border-radius: 0.25em;
+  
 }
 
 .fc-button:hover {
@@ -716,6 +718,7 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
   color: #000;
   background-color: #fff100;
   border-color: #fff100;
+  
 }
 
 .fc-button-primary:hover {
@@ -1054,3 +1057,12 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
 /* .fc-time{
   display : none;
 } */
+
+td.fc-sat {
+  background-color: #eaf4ff;
+}
+td.fc-sun {
+  background-color: #ffeaea;
+}
+
+

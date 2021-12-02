@@ -17,11 +17,60 @@
             max-width: 900px;
             margin: 0 auto;
         }
+
+        ul{
+            max-width: 858px;
+            margin: 0 auto;
+            text-align: right;
+        }
+
+
+        .event-color{
+            display: inline-block;
+            text-align: right;
+            background-color:#FF0000;
+            color:white;
+            padding: 5px;
+            border-radius: 5px;
+            
+        }
+
+        .plan-color{
+            display: inline-block;
+            margin-left: auto;
+            background-color:#AAAAAA;
+            color:white;
+            padding: 5px;
+            border-radius: 5px;
+            
+        }
+
+        .goal-color{
+            display: inline-block;
+            margin-left: auto;
+            background-color:#00ABAE;
+            color:white;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        li{
+            list-style: none;
+            text-align: right;
+        }
+
     </style>
 </head>
 
 <body>
-    <a href="/TECH.Carender/Sutert.html" class="fc-dayGridMonth-button fc-button fc-button-primary fc-button-active">ログアウト</a>
+    <ul> 
+        <li style="font-weight: bold;">表示内容　　　</li>
+        <li class='event-color'>イベント</li>
+        <li class='plan-color'>予定</li>
+        <li class="goal-color">実績</li>
+        <li>　</li>
+        <a href="/logout" button type="button" class="logout fc-button fc-button-primary fc-button-active">ログアウト</a>
+    </ul>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -43,12 +92,13 @@
         // 配列をセット
         var setEvents = [];
         // 背景色の設定
-        var eventsColor = '#378006';
-        // ループ処理でsetEventsにtitle,startを入れる。
+        var eventsColor = '#FF0000';
+
         for (var i = 0; i < eventsKeys.length; i++) {
             var event = {
                 title: (events[i].body),
                 start: (start[i].date) + 'T' + (start[i].start_time),
+                end: (start[i].date) + 'T' + (start[i].end_time),
                 color: eventsColor,
             };
             setEvents.push(event);
@@ -67,108 +117,818 @@
         // 配列をセット
         var setPlans = [];
         // 背景色の設定
-        var plansColor = 'purple';
+        var plansColor = '#AAAAAA';
         for (var i = 0; i < plansKeys.length; i++) {
             var plansUser = plans[i];
-            
-            var eventPlanA_a_1 = {
+
+            var eventPlanA_1_1 = {
                 title: '01 手続き関係',
-                start: plansUser.A_a_1,
+                start: plansUser.A_1_1,
                 color: plansColor,
             };
-            setPlans.push(eventPlanA_a_1);
+            setPlans.push(eventPlanA_1_1);
 
-            var eventPlanA_a_2 = {
+            var eventPlanA_1_2 = {
                 title: '01 環境構築',
-                start: plansUser.A_a_2 ,
+                start: plansUser.A_1_2 ,
                 color: plansColor,
             };
-            setPlans.push(eventPlanA_a_2);
+            setPlans.push(eventPlanA_1_2);
 
-            var eventPlanA_b_1 = {
+            var eventPlanA_2_1 = {
                 title: '02 HTML基礎文法1',
-                start: plansUser.A_b_1 ,
+                start: plansUser.A_2_1 ,
                 color: plansColor,
             };
-            setPlans.push(eventPlanA_b_1);
+            setPlans.push(eventPlanA_2_1);
 
-            var eventPlanA_b_2 = {
+            var eventPlanA_2_2 = {
                 title: '02 HTML基礎文法2',
-                start: plansUser.A_b_2 ,
+                start: plansUser.A_2_2 ,
                 color: plansColor,
             };
-            setPlans.push(eventPlanA_b_2);
+            setPlans.push(eventPlanA_2_2);
 
-            var eventPlanA_b_3 = {
+            var eventPlanA_2_3 = {
                 title: '02 CSS基礎文法1',
-                start: plansUser.A_b_3 ,
+                start: plansUser.A_2_3 ,
                 color: plansColor,
             };
-            setPlans.push(eventPlanA_b_3);
+            setPlans.push(eventPlanA_2_3);
 
-            var eventPlanA_b_4 = {
+            var eventPlanA_2_4 = {
                 title: '02 CSS基礎文法2',
-                start: plansUser.A_b_4 ,
+                start: plansUser.A_2_4 ,
                 color: plansColor,
             };
-            setPlans.push(eventPlanA_b_4);
+            setPlans.push(eventPlanA_2_4);
 
-            var eventPlanA_c_1 = {
+            var eventPlanA_3_1 = {
                 title: '03 Git概要、Gitコマンド',
-                start: plansUser.A_c_1 ,
+                start: plansUser.A_3_1 ,
                 color: plansColor,
             };
-            setPlans.push(eventPlanA_c_1);
+            setPlans.push(eventPlanA_3_1);
 
-            var eventPlanA_c_2 = {
+            var eventPlanA_3_2 = {
                 title: '03 GitHub',
-                start: plansUser.A_c_2 ,
+                start: plansUser.A_3_2 ,
                 color: plansColor,
             };
-            setPlans.push(eventPlanA_c_2);
+            setPlans.push(eventPlanA_3_2);
 
-            var eventPlanA_d_1 = {
+            var eventPlanA_4_1 = {
                 title: '04 ポートフォリオ概要',
-                start: plansUser.A_d_1 ,
+                start: plansUser.A_4_1 ,
                 color: plansColor,
             };
-            setPlans.push(eventPlanA_d_1);
+            setPlans.push(eventPlanA_4_1);
 
-            var eventPlanA_d_2 = {
+            var eventPlanA_4_2 = {
                 title: '04 ポートフォリオ作成１',
-                start: plansUser.A_d_2 ,
+                start: plansUser.A_4_2 ,
                 color: plansColor,
             };
-            setPlans.push(eventPlanA_d_2);
+            setPlans.push(eventPlanA_4_2);
 
-            var eventPlanA_d_3 = {
+            var eventPlanA_4_3 = {
                 title: '04 ポートフォリオ作成２',
-                start: plansUser.A_d_3 ,
+                start: plansUser.A_4_3 ,
                 color: plansColor,
             };
-            setPlans.push(eventPlanA_d_3);
+            setPlans.push(eventPlanA_4_3);
 
-            var eventPlanA_d_4 = {
+            var eventPlanA_4_4 = {
                 title: '04 ポートフォリオ作成２',
-                start: plansUser.A_d_4 ,
+                start: plansUser.A_4_4 ,
                 color: plansColor,
             };
-            setPlans.push(eventPlanA_d_4);
+            setPlans.push(eventPlanA_4_4);
 
-            var eventPlanA_d_5 = {
+            var eventPlanA_4_5 = {
                 title: '04 ポートフォリオ演習',
-                start: plansUser.A_d_5 ,
+                start: plansUser.A_4_5 ,
                 color: plansColor,
             };
-            setPlans.push(eventPlanA_d_5);
-        };
+            setPlans.push(eventPlanA_4_5);
+
+            var eventPlanA_5_1 = {
+                title: '05 PHP概要',
+                start: plansUser.A_5_1 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_5_1);
+
+            var eventPlanA_5_2 = {
+                title: '05 PHP基礎文法1',
+                start: plansUser.A_5_2 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_5_2);
+
+            var eventPlanA_5_3 = {
+                title: '05 PHP基礎文法2',
+                start: plansUser.A_5_3 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_5_3);
+
+            var eventPlanA_5_4 = {
+                title: '05 PHP基礎文法3',
+                start: plansUser.A_5_4 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_5_4);
+
+            var eventPlanA_5_5 = {
+                title: '05 PHP基礎文法4',
+                start: plansUser.A_5_5 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_5_5);
+
+            var eventPlanA_5_6 = {
+                title: '05 PHP基礎文法5',
+                start: plansUser.A_5_6 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_5_6);
+
+            var eventPlanA_5_7= {
+                title: '05 PHP基礎文法6',
+                start: plansUser.A_5_7 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_5_7);
+
+            var eventPlanA_6_1= {
+                title: '06 JavaScript概要',
+                start: plansUser.A_6_1 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_6_1);
+
+            var eventPlanA_6_2= {
+                title: '06 JavaScript基礎文法1',
+                start: plansUser.A_6_2 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_6_2);
+
+            var eventPlanA_6_3= {
+                title: '06 JavaScript基礎文法2',
+                start: plansUser.A_6_3 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_6_3);
+
+            var eventPlanA_6_4= {
+                title: '06 JavaScriptフレームワーク',
+                start: plansUser.A_6_4 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_6_4);
+
+            var eventPlanA_6_5= {
+                title: '06 JavaScript演習',
+                start: plansUser.A_6_5 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_6_5);
+
+            var eventPlanA_7_1= {
+                title: '07 SQL概要',
+                start: plansUser.A_7_1 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_7_1);
+
+            var eventPlanA_7_2= {
+                title: '07 SQL基礎文法1',
+                start: plansUser.A_7_2 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_7_2);
+
+            var eventPlanA_7_3= {
+                title: '07 SQL基礎文法2',
+                start: plansUser.A_7_3 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_7_3);
+
+            var eventPlanA_7_4= {
+                title: '07 SQL基礎文法3',
+                start: plansUser.A_7_4 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_7_4);
+
+            var eventPlanA_7_5= {
+                title: '07 SQL演習1',
+                start: plansUser.A_7_5 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_7_5);
+
+            var eventPlanA_7_6= {
+                title: '07 SQL演習2',
+                start: plansUser.A_7_6 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanA_7_6);
+
+            var eventPlanB_1_1= {
+                title: '01 Twitterクローン：ホーム画面1',
+                start: plansUser.B_1_1 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_1_1);
+
+            var eventPlanB_1_2= {
+                title: '01 Twitterクローン：ホーム画面2',
+                start: plansUser.B_1_2 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_1_2);
+
+            var eventPlanB_1_3= {
+                title: '01 Twitterクローン：Git管理',
+                start: plansUser.B_1_3 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_1_3);
+
+            var eventPlanB_1_4= {
+                title: '01 Twitterクローン：ホーム画面3',
+                start: plansUser.B_1_4 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_1_4);
+
+            var eventPlanB_1_5= {
+                title: '01 Twitterクローン：ホーム画面4',
+                start: plansUser.B_1_5 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_1_5);
+
+            var eventPlanB_2_1= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: plansUser.B_2_1 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_2_1);
+
+            var eventPlanB_2_2= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: plansUser.B_2_2 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_2_2);
+
+            var eventPlanB_2_3= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: plansUser.B_2_3 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_2_3);
+
+            var eventPlanB_2_4= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: plansUser.B_2_4 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_2_4);
+
+            var eventPlanB_2_5= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: plansUser.B_2_5 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_2_5);
+
+            var eventPlanB_2_6= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: plansUser.B_2_6 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_2_6);
+
+            var eventPlanB_2_7= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: plansUser.B_2_7 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_2_7);
+
+            var eventPlanB_2_8= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: plansUser.B_2_8 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_2_8);
+
+            var eventPlanB_2_9= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: plansUser.B_2_9 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_2_9);
+
+            var eventPlanB_2_10= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: plansUser.B_2_10 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_2_10);
+
+            var eventPlanB_2_11= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: plansUser.B_2_11 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_2_11);
+
+            var eventPlanB_2_12= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: plansUser.B_2_12 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_2_12);
+
+            var eventPlanB_2_13= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: plansUser.B_2_13 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_2_13);
+
+            var eventPlanB_2_14= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: plansUser.B_2_14 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_2_14);
+
+            var eventPlanB_2_15= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: plansUser.B_2_15 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_2_15);
+            
+            var eventPlanB_3_1= {
+                title: '03 Laravel概要',
+                start: plansUser.B_3_1 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_3_1);
         
-        console.log(setEvents);
+            var eventPlanB_3_2= {
+                title: '03 Laravel使い方1',
+                start: plansUser.B_3_2 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_3_2);
+        
+            var eventPlanB_3_3= {
+                title: '03 Laravel使い方2',
+                start: plansUser.B_3_3 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_3_3);
+        
+            var eventPlanB_3_4= {
+                title: '03 LaravelでHerokuデプロイ',
+                start: plansUser.B_3_4 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_3_4);
+        
+            var eventPlanB_3_5= {
+                title: '03 Laravel演習',
+                start: plansUser.B_3_5 ,
+                color: plansColor,
+            };
+            setPlans.push(eventPlanB_3_5);
+        
+        };
 
-        var allEvents = setEvents.concat(setPlans);
-        // const allEvents = Object.assign(setEvents,setPlans);
-        console.log(allEvents);
+        //////////////////////////////
+        // ログインユーザーの実績を表示
+        //////////////////////////////
 
+        // $param_json_recordsを受け取る
+        var records = @json($param_json_records);
+        // jsonをオブジェクト化
+        var records = JSON.parse(records);
+        // 変数のキーの数を取得
+        var recordsKeys = Object.keys(records);
+        // 配列をセット
+        var setRecords = [];
+        // 背景色の設定
+        var recordsColor = '#00ABAE';
+        for (var i = 0; i < recordsKeys.length; i++) {
+            var recordsUser = records[i];
+
+            var eventRecordsA_1_1 = {
+                title: '01 手続き関係',
+                start: recordsUser.A_1_1,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_1_1);
+
+            var eventRecordsA_1_2 = {
+                title: '01 環境構築',
+                start: recordsUser.A_1_2 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_1_2);
+
+            var eventRecordsA_2_1 = {
+                title: '02 HTML基礎文法1',
+                start: recordsUser.A_2_1 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_2_1);
+
+            var eventRecordsA_2_2 = {
+                title: '02 HTML基礎文法2',
+                start: recordsUser.A_2_2 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_2_2);
+
+            var eventRecordsA_2_3 = {
+                title: '02 CSS基礎文法1',
+                start: recordsUser.A_2_3 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_2_3);
+
+            var eventRecordsA_2_4 = {
+                title: '02 CSS基礎文法2',
+                start: recordsUser.A_2_4 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_2_4);
+
+            var eventRecordsA_3_1 = {
+                title: '03 Git概要、Gitコマンド',
+                start: recordsUser.A_3_1 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_3_1);
+
+            var eventRecordsA_3_2 = {
+                title: '03 GitHub',
+                start: recordsUser.A_3_2 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_3_2);
+
+            var eventRecordsA_4_1 = {
+                title: '04 ポートフォリオ概要',
+                start: recordsUser.A_4_1 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_4_1);
+
+            var eventRecordsA_4_2 = {
+                title: '04 ポートフォリオ作成１',
+                start: recordsUser.A_4_2 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_4_2);
+
+            var eventRecordsA_4_3 = {
+                title: '04 ポートフォリオ作成２',
+                start: recordsUser.A_4_3 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_4_3);
+
+            var eventRecordsA_4_4 = {
+                title: '04 ポートフォリオ作成２',
+                start: recordsUser.A_4_4 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_4_4);
+
+            var eventRecordsA_4_5 = {
+                title: '04 ポートフォリオ演習',
+                start: recordsUser.A_4_5 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_4_5);
+
+            var eventRecordsA_5_1 = {
+                title: '05 PHP概要',
+                start: recordsUser.A_5_1 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_5_1);
+
+            var eventRecordsA_5_2 = {
+                title: '05 PHP基礎文法1',
+                start: recordsUser.A_5_2 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_5_2);
+
+            var eventRecordsA_5_3 = {
+                title: '05 PHP基礎文法2',
+                start: recordsUser.A_5_3 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_5_3);
+
+            var eventRecordsA_5_4 = {
+                title: '05 PHP基礎文法3',
+                start: recordsUser.A_5_4 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_5_4);
+
+            var eventRecordsA_5_5 = {
+                title: '05 PHP基礎文法4',
+                start: recordsUser.A_5_5 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_5_5);
+
+            var eventRecordsA_5_6 = {
+                title: '05 PHP基礎文法5',
+                start: recordsUser.A_5_6 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_5_6);
+
+            var eventRecordsA_5_7= {
+                title: '05 PHP基礎文法6',
+                start: recordsUser.A_5_7 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_5_7);
+
+            var eventRecordsA_6_1= {
+                title: '06 JavaScript概要',
+                start: recordsUser.A_6_1 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_6_1);
+
+            var eventRecordsA_6_2= {
+                title: '06 JavaScript基礎文法1',
+                start: recordsUser.A_6_2 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_6_2);
+
+            var eventRecordsA_6_3= {
+                title: '06 JavaScript基礎文法2',
+                start: recordsUser.A_6_3 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_6_3);
+
+            var eventRecordsA_6_4= {
+                title: '06 JavaScriptフレームワーク',
+                start: recordsUser.A_6_4 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_6_4);
+
+            var eventRecordsA_6_5= {
+                title: '06 JavaScript演習',
+                start: recordsUser.A_6_5 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_6_5);
+
+            var eventRecordsA_7_1= {
+                title: '07 SQL概要',
+                start: recordsUser.A_7_1 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_7_1);
+
+            var eventRecordsA_7_2= {
+                title: '07 SQL基礎文法1',
+                start: recordsUser.A_7_2 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_7_2);
+
+            var eventRecordsA_7_3= {
+                title: '07 SQL基礎文法2',
+                start: recordsUser.A_7_3 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_7_3);
+
+            var eventRecordsA_7_4= {
+                title: '07 SQL基礎文法3',
+                start: recordsUser.A_7_4 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_7_4);
+
+            var eventRecordsA_7_5= {
+                title: '07 SQL演習1',
+                start: recordsUser.A_7_5 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_7_5);
+
+            var eventRecordsA_7_6= {
+                title: '07 SQL演習2',
+                start: recordsUser.A_7_6 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsA_7_6);
+
+            var eventRecordsB_1_1= {
+                title: '01 Twitterクローン：ホーム画面1',
+                start: recordsUser.B_1_1 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_1_1);
+
+            var eventRecordsB_1_2= {
+                title: '01 Twitterクローン：ホーム画面2',
+                start: recordsUser.B_1_2 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_1_2);
+
+            var eventRecordsB_1_3= {
+                title: '01 Twitterクローン：Git管理',
+                start: recordsUser.B_1_3 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_1_3);
+
+            var eventRecordsB_1_4= {
+                title: '01 Twitterクローン：ホーム画面3',
+                start: recordsUser.B_1_4 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_1_4);
+
+            var eventRecordsB_1_5= {
+                title: '01 Twitterクローン：ホーム画面4',
+                start: recordsUser.B_1_5 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_1_5);
+
+            var eventRecordsB_2_1= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: recordsUser.B_2_1 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_2_1);
+
+            var eventRecordsB_2_2= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: recordsUser.B_2_2 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_2_2);
+
+            var eventRecordsB_2_3= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: recordsUser.B_2_3 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_2_3);
+
+            var eventRecordsB_2_4= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: recordsUser.B_2_4 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_2_4);
+
+            var eventRecordsB_2_5= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: recordsUser.B_2_5 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_2_5);
+
+            var eventRecordsB_2_6= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: recordsUser.B_2_6 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_2_6);
+
+            var eventRecordsB_2_7= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: recordsUser.B_2_7 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_2_7);
+
+            var eventRecordsB_2_8= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: recordsUser.B_2_8 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_2_8);
+
+            var eventRecordsB_2_9= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: recordsUser.B_2_9 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_2_9);
+
+            var eventRecordsB_2_10= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: recordsUser.B_2_10 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_2_10);
+
+            var eventRecordsB_2_11= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: recordsUser.B_2_11 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_2_11);
+
+            var eventRecordsB_2_12= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: recordsUser.B_2_12 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_2_12);
+
+            var eventRecordsB_2_13= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: recordsUser.B_2_13 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_2_13);
+
+            var eventRecordsB_2_14= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: recordsUser.B_2_14 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_2_14);
+
+            var eventRecordsB_2_15= {
+                title: '02 Twitterクローン：ホーム画面4',
+                start: recordsUser.B_2_15 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_2_15);
+            
+            var eventRecordsB_3_1= {
+                title: '03 Laravel概要',
+                start: recordsUser.B_3_1 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_3_1);
+        
+            var eventRecordsB_3_2= {
+                title: '03 Laravel使い方1',
+                start: recordsUser.B_3_2 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_3_2);
+        
+            var eventRecordsB_3_3= {
+                title: '03 Laravel使い方2',
+                start: recordsUser.B_3_3 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_3_3);
+        
+            var eventRecordsB_3_4= {
+                title: '03 LaravelでHerokuデプロイ',
+                start: recordsUser.B_3_4 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_3_4);
+        
+            var eventRecordsB_3_5= {
+                title: '03 Laravel演習',
+                start: recordsUser.B_3_5 ,
+                color: recordsColor,
+            };
+            setRecords.push(eventRecordsB_3_5);
+
+        
+        };
+
+        var allEvents = setEvents.concat(setPlans,setRecords);
+        
         document.addEventListener("DOMContentLoaded", function() {
             var calendarEl = document.getElementById("calendar");
 
@@ -179,15 +939,13 @@
                 navLinks: false,
                 defaultView: "dayGridMonth",
                 //カレンダーを月ごとに表示
-                editable: true,
-                //イベント編集
                 firstDay: 0,
                 eventDurationEditable: false,
                 timeZone: "Asia/Tokyo",
                 selectLongPressDelay: 0,
                 editable: false,
                 locale: "ja",
-                businessHours: true,
+                businessHours: false,
                 header: {
                     left: "prev,next",
                     center: "title",

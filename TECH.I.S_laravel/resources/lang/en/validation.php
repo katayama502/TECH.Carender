@@ -51,16 +51,12 @@ return [
     'min'                  => [
         'numeric' => ':attributeは:min以上にしてください。',
         'file'    => ':attributeは:min KB以上のファイルにしてください。.',
-
         'string'  => 'パスワードを半角英数字で入力してください!',
-
         'array'   => ':attributeは:min個以上にしてください。',
     ],
     'not_in'               => '選択された:attributeは正しくありません。',
     'numeric'              => ':attributeは数字にしてください。',
-
     'regex'                => 'パスワードを半角英数字で入力してください!',
-
     'required'             => ':attribute',
     'required_if'          => ':otherが:valueの時、:attributeは必須です。',
     'required_with'        => ':valuesが存在する時、:attributeは必須です。',
@@ -76,9 +72,7 @@ return [
     ],
     'string'               => ':attributeは文字列にしてください。',
     'timezone'             => ':attributeは正しいタイムゾーンをしていしてください。',
-
     'unique'               => '既存のメールアドレスは既に登録されています。',
-
     'url'                  => ':attributeを正しい書式にしてください。',
 
     /*
@@ -96,8 +90,6 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
-
-
         'genre' => [
             'required' =>'課題を選択してください',
         ],
