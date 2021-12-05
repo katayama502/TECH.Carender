@@ -16,7 +16,7 @@
             <img src="img/TECH.png">
         </div>
         <div class="item">
-        <a href="{{ url('/login') }}" class="btn btn--yellow btn--cubic">ログイン</a>
+        <a href="{{ url('/login_admin') }}" class="btn btn--yellow btn--cubic">ログイン</a>
         </div>
         <br>
         <div class="item">

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 // use resources\views;
 use Illuminate\Http\Request;
-
 use App\Models\Administrators;
 use App\Models\learning_plan;
 use App\Models\learning_record;
@@ -19,34 +18,20 @@ class TechController extends Controller
     return view('start');
   }
 
-
-  public function Log_mv(){
-    return view('Login');
-  }
-
-
   public function getLog(){
-    session()->flash('flash_message', 'ログインに失敗しました');
     return view('Login');
   }
-
-
-  // public function New_mv(){
-  //   return view('New_sain');
-  // }
-
 
   public function getNew(){
-    session()->flash('flash_message', '登録に失敗しました');
     return view('New_sain');
   }
 
 
 
-
 //グラフ関係の関数//
   public function main(){
-    return view('graph_main');
+    $user_id = session()->get('user_id');
+    return view('graph_main',["user_id" => $user_id]);
   }
 
 
@@ -63,6 +48,9 @@ class TechController extends Controller
   public function development(){
     return view('graph_development');
   }
+
+
+
 
 
 
@@ -84,7 +72,6 @@ class TechController extends Controller
       return view('');
     }
     return view('Calendar');
-
   }
 
 
@@ -94,19 +81,12 @@ class TechController extends Controller
 
 
   public function getAdmin_login(){
-    session()->flash('flash_message', 'ログインに失敗しました');
     return view('Login_admin');
   }
-
-  public function Admin_login(){
-    return view('Login_admin');
-  }
-
 
   public function getAdmin_sain(){
     return view('New_sain_admin');
   }
-
 
   public function getgoal(Request $request){
     $data = $request->input('date');
@@ -115,7 +95,7 @@ class TechController extends Controller
 
 
 
-
+  
   //セッション確認//
   private function login(){
    
@@ -139,7 +119,10 @@ class TechController extends Controller
 
   public function add(Request $request){
 
-    if(empty('sain_User_name')){
+    $sain_User_name = $request->sain_User_name;
+    $sain_User_pass = $request->sain_User_pass;
+
+    if(empty($sain_User_name)){
       session()->flash('flash_message', '登録に失敗しました');
       $request->validate([
         'sain_User_name' => 'required|email|unique:administrators,email',
@@ -148,7 +131,7 @@ class TechController extends Controller
       return redirect('New_sain');
       }
 
-    if(empty('sain_User_pass')){
+    if(empty($sain_User_pass)){
         session()->flash('flash_message', '登録に失敗しました');
         $request->validate([
           'sain_User_name' => 'required|email|unique:administrators,email',
@@ -166,7 +149,6 @@ class TechController extends Controller
       $date = [
           'email' => $sain_User_name,
           'password' => $sain_User_pass,
-
       ];
       User::insert($date);
 
@@ -180,7 +162,6 @@ class TechController extends Controller
         learning_plan::insert($date_user);
         learning_record::insert($date_user);
         return redirect('/');
-
 }
 
 
@@ -192,8 +173,6 @@ class TechController extends Controller
 //ログイン認証//
   public function chtecktest(Request $request){
    
-
-
     $login_User_name = $request->login_User_name;
     $login_User_pass = $request->login_User_pass;
 
@@ -224,11 +203,9 @@ class TechController extends Controller
     $user = User::where('email',$login_User_name) -> first();
     $pass=$user->password ;
 
-    if($pass == $login_User_pass){
-
+    if(password_verify($login_User_pass,$pass)){
       session(['user_id'=> $user->id]);
       return redirect('Calendar');
-
     }else{
       session()->flash('flash_message', 'ログインに失敗しました');
       $request->validate([
@@ -243,24 +220,29 @@ class TechController extends Controller
     
 
 
+
+
 //管理者新規登録 //
 
 public function admin_add_1(Request $request){
 
-  if(empty('admin_sain_name')){
+  $admin_sain_name = $request->admin_sain_name;
+  $admin_sain_pass = $request->admin_sain_pass;
+
+  if(empty($admin_sain_name)){
     session()->flash('flash_message', '登録に失敗しました');
-    // $request->validate([
-    //   'admin_sain_name' => 'required|email|unique:administrators,email',
-    //   'admin_sain_pass' => 'min:8|regex:/\A(?=.?[a-z])(?=.?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/',
-    // ]);
+    $request->validate([
+      'admin_sain_name' => 'required|email|unique:administrators,email',
+      'admin_sain_pass' => 'min:8|regex:/\A(?=.?[a-z])(?=.?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/',
+    ]);
     return view('sain_admin');
   }
-  if(empty('admin_sain_pass')){
+  if(empty( $admin_sain_pass)){
     session()->flash('flash_message', '登録に失敗しました');
-    // $request->validate([
-    //   'admin_sain_name' => 'required|email|unique:administrators,email',
-    //   'admin_sain_pass' => 'min:8|regex:/\A(?=.?[a-z])(?=.?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/',
-    // ]);
+    $request->validate([
+      'admin_sain_name' => 'required|email|unique:administrators,email',
+      'admin_sain_pass' => 'min:8|regex:/\A(?=.?[a-z])(?=.?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/',
+    ]);
     return view('sain_admin');
   }
 
@@ -317,7 +299,8 @@ public function admin_check(Request $request){
   $admin_date = Administrators::where('email',$admin_login_name) -> first();
   $pass=$admin_date->password ;
 
-  if($pass == $admin_login_pass){
+  
+  if(password_verify($admin_login_pass,$pass)){
     session(['user_id'=> $admin_date->id]);
     return redirect('Calendar');
   }else{
@@ -328,6 +311,5 @@ public function admin_check(Request $request){
 
 
 }
-
 
 
