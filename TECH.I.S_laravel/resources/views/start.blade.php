@@ -16,11 +16,11 @@
             <img src="img/TECH.png">
         </div>
         <div class="item">
-        <a href="{{ url('Login_mv') }}" class="btn btn--yellow btn--cubic">ログイン</a>
+        <a href="{{ url('login') }}" class="btn btn--yellow btn--cubic">ログイン</a>
         </div>
         <br>
         <div class="item">
-            <a href="{{ url('New_sain_mv') }}" class="btn btn--yellow btn--cubic">新規登録</a>
+            <a href="{{ url('New_sain') }}" class="btn btn--yellow btn--cubic">新規登録</a>
         </div>
     </div>
 </div>

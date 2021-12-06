@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset='utf-8' />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link href="js/packages/core/main.css" rel="stylesheet"></script>
 <link href='js/packages/daygrid/main.css' rel='stylesheet' />
 <link href='js/packages/timegrid/main.css' rel='stylesheet' />
@@ -30,37 +30,6 @@
   #calendar {
     max-width: 900px;
     margin: 0 auto;
-  }
-  
-
-  @media screen and (max-width: 767px){
-    .fc-toolbar h2 {
-        font-size: 1.5em;
-        margin: 0;
-    }
-    .fc-button{
-        font-size: 0.75em;
-    }
-
-   
-  }
-
-  @media screen and (max-width: 500px){
-    .fc-toolbar h2 {
-        font-size: 1em;
-        margin: 0;
-    }
-    .fc-button{
-        font-size: 0.5em;
-    }
-
-    .fc table{
-        font-size: 0.3em;
-        width: 767px;
-    }
-    
-    
-
   }
 
 </style>
