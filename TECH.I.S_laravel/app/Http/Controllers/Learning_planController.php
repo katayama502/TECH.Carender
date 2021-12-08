@@ -14,10 +14,17 @@ class Learning_planController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function edit(Request $request, $user_id, $date)
+    public function edit(Request $request, $date)
     {
-        // ユーザーID,日付は$requestから取得したい
-        // バリデーションを追加したい
+        // セッション確認
+        $user_id = session()->get('user_id');
+        if(empty($user_id)){
+            return redirect('/');
+        }
+        
+        // 日付は$requestから取得
+
+        // バリデーション
         $this->validate($request, [
             'genre' => 'required',
             'category_name' => 'required',
@@ -50,13 +57,16 @@ class Learning_planController extends Controller
     public function index(Request $request)
     {
         $lessonNameArrayflip=array_flip(Learning_plan::$lessonNameArray);
-        //var_dump($lessonNameArrayflip); exit;
-        // 日付とIDは$requestから取得するようにしたい
+        // セッション確認
+        $user_id = session()->get('user_id');
+        if(empty($user_id)){
+            return redirect('/');
+        }
+        // 日付は$requestから取得するようにしたい
         // 学習予定の取得
-        $learningplans = Learning_plan::find(1)->toArray();
+        $learningplans = Learning_plan::where('user_id',$user_id)->get()->toArray();
         $planResponse = array();
-        
-        foreach($learningplans as $key => $learningplan){
+        foreach($learningplans[0] as $key => $learningplan){
             if($learningplan === '2020-10-30'){
                 $lessonName = $lessonNameArrayflip[$key];
                 array_push($planResponse,$lessonName);
@@ -64,9 +74,9 @@ class Learning_planController extends Controller
         }
         
         //学習実績の取得
-        $learningrecords = Learning_record::find(1)->toArray();
+        $learningrecords = Learning_record::where('user_id',$user_id)->get()->toArray();
         $recordResponse = array();
-        foreach($learningrecords as $key => $learningrecord){
+        foreach($learningrecords[0] as $key => $learningrecord){
             if($learningrecord === '2020-10-30'){
                 $lessonName = $lessonNameArrayflip[$key];
                 array_push($recordResponse,$lessonName);
@@ -74,11 +84,11 @@ class Learning_planController extends Controller
         }
 
         //メモの取得
-        $memo = Memo::where('date','2020-10-30')->where('user_id',1);
+        $memo = Memo::where('date','2020-10-30')->where('user_id',$user_id);
         if ($memo === null) {
             $memoResponse = "";
         }else{
-            $memo = Memo::where('date','2020-10-30')->where('user_id',1)->value('body');
+            $memo = Memo::where('date','2020-10-30')->where('user_id',$user_id)->value('body');
             $memoResponse = $memo;
         }
         
@@ -97,13 +107,15 @@ class Learning_planController extends Controller
      */
     public function deletePlan(Request $request, $learningplan)
     {
-
+        $user_id = session()->get('user_id');
+        if(empty($user_id)){
+            return redirect('/');
+        }
         //レッスン名をカラム名に変換
         $deletelearningplan = Learning_plan::$lessonNameArray[$learningplan];
 
         //指定したカラムをNullにする
-
-        Learning_plan::where('user_id', 1)->update([ $deletelearningplan => null]);
+        Learning_plan::where('user_id', $user_id)->update([ $deletelearningplan => null]);
         return redirect('goal_input')->with('flash_message', '削除が完了しました');
     }
 
@@ -115,12 +127,15 @@ class Learning_planController extends Controller
      */
     public function deleteRecord(Request $request, $learningrecord)
     {
-
+        $user_id = session()->get('user_id');
+        if(empty($user_id)){
+            return redirect('/');
+        }
         //レッスン名をカラム名に変換
         $deletelearningrecord = Learning_plan::$lessonNameArray[$learningrecord];
         
         //指定したカラムをNullにする
-        Learning_record::where('user_id', 1)->update([ $deletelearningrecord => null]);
+        Learning_record::where('user_id', $user_id)->update([ $deletelearningrecord => null]);
         return redirect('goal_input')->with('flash_message', '削除が完了しました');
     }
 }
