@@ -1,28 +1,49 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Console\Commands;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail as FacadesMail;
-use Mail;
+use App\Http\Controllers\MailSendController;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMail;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Carbon;
 
-// use Illuminate\Foundation\Auth\User;
-
-class MailSendController extends Controller
+class PlanMail extends Command
 {
-    //
-    public static function send()
-    {
-        //////////////////////////////////////
-        // 参考コード ログインユーザーのID取得
-        //////////////////////////////////////
-        // public function select(Request $request) {
-        // $items = DB::table('users')->where('id',$request->id)->first();
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'PlanMail';
 
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'send mail today plan';
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @return int
+     */
+    public function handle()
+    {
         // todo!!!!!!!!!!!!!! セッションでログインユーザーからメールアドレスを取得。
         $toEmail = DB::table('users')->where('id', 1)->first('email');
         // オブジェクトを配列化
@@ -91,11 +112,9 @@ class MailSendController extends Controller
         $planAll1 = implode(',', $planAll1);
         
         // メールを送る。
-        if(empty($planAll1)){
-            return redirect('/calendar');
-        }else{
+        if(!empty($planAll1)){
             Mail::to($to)->send(new SendMail($planAll1));
-            return redirect('/calendar');
         }
+
     }
 }
