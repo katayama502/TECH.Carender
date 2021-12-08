@@ -49,7 +49,7 @@
         <div class="container">
             <h2>学習項目選択</h2>
         </div>      
-        <form action="{{ url('goal_input/1/2020-10-30') }}" method="post" class="container">
+        <form action="{{ url('goal_input/2020-10-30') }}" method="post" class="container">
             {{ csrf_field() }}
             <div class="item-input">
                 <!-- 1つめのセレクトボックス。これは静的に生成されている（最初から内容が決まっている） -->
@@ -96,9 +96,9 @@
     </footer>
     <script>
 
-        ///////////////////
-        //バリデーション処理//
-        ///////////////////
+        ////////////////////////
+        //バリデーションメッセージ//
+        ////////////////////////
 
         //メッセージ表示場所、時間の設定
 

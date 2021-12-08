@@ -49,7 +49,7 @@ Route::get('admin', [App\Http\Controllers\TechController::class, 'getAdmin'])->n
 });
 
 //予定・実績・イベント登録
-Route::post('goal_input/{user_id}/{date}', [App\Http\Controllers\Learning_planController::class, 'edit']);
+Route::post('goal_input/{date}', [App\Http\Controllers\Learning_planController::class, 'edit']);
 Route::get('goal_input', [App\Http\Controllers\Learning_planController::class, 'index']);
 Route::post('plan_delete/{learningplan}', [App\Http\Controllers\Learning_planController::class, 'deletePlan']);
 Route::post('record_delete/{learningrecord}', [App\Http\Controllers\Learning_planController::class, 'deleteRecord']);
