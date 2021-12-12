@@ -107,6 +107,7 @@ class Learning_planController extends Controller
      */
     public function deletePlan(Request $request, $learningplan)
     {
+        // セッション確認
         $user_id = session()->get('user_id');
         if(empty($user_id)){
             return redirect('/');
