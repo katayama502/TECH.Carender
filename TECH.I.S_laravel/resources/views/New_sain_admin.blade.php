@@ -42,6 +42,9 @@
         <div class="item">
             <button type="submit" class="btn btn--yellow btn--cubic">登録</button>
         </div>
+        <div class="item">
+            <a href="{{ url('admin') }}"class="btn btn--yellow btn--cubic">戻る</a>
+        </div>
         </form>
     </div>
 </div>

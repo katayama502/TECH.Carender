@@ -31,7 +31,8 @@ Route::get('/',[TechController::class,'index']);
 Route::get('login', [TechController::class,'getLog']);
 Route::get('New_sain', [TechController::class,'getNew']);
 Route::get('Calendar', [TechController::class,'getCalendar']);
-Route::get('Not_Calendar', [TechController::class,'getCalendar_not']);
+Route::get('getCalendar', [TechController::class,'getCalendar_admin']);
+Route::get('Calendar_viwe', [TechController::class,'calender_view']);
 Route::get('goal_input', [TechController::class,'getgoal']);
 
 
