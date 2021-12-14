@@ -51,7 +51,7 @@
                     </div>
                     <div class="time_input">
                         <h3>終了時間</h3>
-                        <input type="text" min="09：00" max="17：30" step="900" name="end_time" class="time end" value="{{ old('name_start_time') }}">
+                        <input type="text" min="09：00" max="17：30" step="900" name="end_time" class="time end" value="{{ old('end_time') }}">
                     </div>
                 </div>
                 <div class="item-input">
@@ -82,8 +82,9 @@
             @endif
             @if (session('flash_message')==='終了時刻は開始時刻より後に設定してください')
                 $(function () {
-                        toastr.error('{{ session('flash_message') }}');                
+                        toastr.error('{{ session('flash_message') }}');                                     
                 });
+  
             @endif
             @if (count($errors) > 0)
                 $(function () {

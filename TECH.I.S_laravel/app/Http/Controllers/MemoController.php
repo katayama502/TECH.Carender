@@ -14,13 +14,13 @@ class MemoController extends Controller
      */
     public function edit(Request $request)
     {
+        //ログイン確認
+        $user_id = session()->get('user_id');
+        if(empty($user_id)){
+            return redirect('/');
+        }
+        
         if($request->submit == "add"){
-            //ログイン確認
-            $user_id = session()->get('user_id');
-            if(empty($user_id)){
-                return redirect('/');
-            }
-
             $this->validate($request, [
                 'memo' => 'required'
             ]);
