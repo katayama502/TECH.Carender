@@ -8,7 +8,7 @@ function addEvent(calendar,info){
         type: 'POST',
         dataTape: 'json',
         data:{
-            "title":title,
+            // "title":title,
             "date":info.dateStr
             //日程取得
         }

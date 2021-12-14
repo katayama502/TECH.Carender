@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Administrators extends Model
 {
     use HasFactory;
+
     
 }
