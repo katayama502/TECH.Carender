@@ -3,15 +3,19 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
 
  
+
 <div class="chart-container" style="position: relative; width: 800; height: 30;">
+
 <div class="toggle_btn">
       <span></span>
       <span></span>
     </div>
 	<canvas id="myChart" ></canvas>
+
 	<canvas id="myChart2" ></canvas>
 </div>
 <div class="main_botan" style = 'width: 50%';>
+
 <div class="item">
         <a href="{{ url('Not_Calendar') }}" class="btn btn--yellow btn--cubic">戻る</a>
 </div>
@@ -20,6 +24,7 @@
 <?php
 use App\Models\learning_record;
 $count=0;
+
 $id_pass_ = 0;
 $user_records = learning_record::where('user_id',$user_id) -> first();
 
@@ -91,19 +96,22 @@ foreach($id_pass_M as $value){
 	if(!empty($value)){
 		$count=$count+1;
 	}
+
 }
 
 ?>
 <script>
 　　　
 
-	
+
 	var ctx = document.getElementById('myChart').getContext('2d');
     
 	var chart = new Chart(ctx, {
 		type: 'horizontalBar',
 		data: {
+
 			labels: ['基礎課題'],
+
 			datasets: [{
 				label: 'カリキュラム進捗確認グラフ',
 				data: [<?php echo $count ?>],
@@ -112,6 +120,7 @@ foreach($id_pass_M as $value){
 			}]
 		},
 		options: {
+
 			scales: {
         		xAxes: [          
             			{
@@ -124,10 +133,12 @@ foreach($id_pass_M as $value){
 					]
     			}
     		}
+
 	});
     
 	
 </script>
+
 
 <script>
 　　　
@@ -163,4 +174,5 @@ foreach($id_pass_M as $value){
     
 	
 </script>
+
 

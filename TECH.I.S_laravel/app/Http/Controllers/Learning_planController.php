@@ -139,4 +139,4 @@ class Learning_planController extends Controller
         Learning_record::where('user_id', $user_id)->update([ $deletelearningrecord => null]);
         return redirect('goal_input')->with('flash_message', '削除が完了しました');
     }
-}
+

@@ -44,7 +44,7 @@ class PlanMail extends Command
      */
     public function handle()
     {
-        // todo!!!!!!!!!!!!!! セッションでログインユーザーからメールアドレスを取得。
+        // todo!!!!!!!!!!!!!! users 全員のアドレス取得。
         $toEmail = DB::table('users')->where('id', 1)->first('email');
         // オブジェクトを配列化
         $arrayMail = (array)$toEmail;
@@ -57,7 +57,7 @@ class PlanMail extends Command
             ]
         ];
 
-        // todo!!!!!!!!!!!!!! セッションでログインユーザーから学習予定を取得。
+        // todo!!!!!!!!!!!!!! users 全員のアドレス取得。
         // DBからlearning_plansを取得
         $planAll = DB::table('learning_plans')->where('id', 1)->get();
         // objectを配列に
@@ -107,9 +107,6 @@ class PlanMail extends Command
                 }
             }
         }
-
-        // 取得した学習項目（配列）を文字列化
-        $planAll1 = implode(',', $planAll1);
         
         // メールを送る。
         if(!empty($planAll1)){
