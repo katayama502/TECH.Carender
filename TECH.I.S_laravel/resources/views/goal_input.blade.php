@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,14 +10,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <title>目標・実績入力画面</title>
 </head>
+
 <body>
     <header>
         <div class="container"> 
+
             <h2>2021年 11月 10日</h2>
         </div>
     </header>
     <div class="plan-record-wrapper">
+
         <div class="container">  
+
             <div class="learning-item">
                 <h2>目標</h2>
                 <div class="scrollbox">
@@ -24,11 +29,13 @@
                     <form action="{{ url('plan_delete/' .$learningplan) }}" method="post" class="form-horizontal">
                         {{ csrf_field() }}
                         <p class="learning_plan">{{$learningplan}}</p>
+
                         <button type="submit" class="btn--delete" name="submit" id = "sub1" value="plan">削除</button>
                     </form>
                     @endforeach
                 </div>
             </div> 
+
             <div class="learning-item">
                 <h2>実績</h2>
                 <div class="scrollbox">
@@ -36,6 +43,7 @@
                     <form action="{{ url('record_delete/' .$learningrecord) }}" method="post" class="form-horizontal">
                         {{ csrf_field() }}
                         <p class="learning_plan">{{$learningrecord}}</p>
+
                         <button type="submit" class="btn--delete" name="submit" id = "sub1" value="plan">削除</button>
                     </form>  
                     @endforeach
@@ -47,6 +55,7 @@
         <div class="container">
             <h2>学習項目選択</h2>
         </div>      
+
         <form action="{{ url('goal_input/2020-10-30') }}" method="post" class="container">
             {{ csrf_field() }}
             <div class="item-input">
@@ -62,7 +71,9 @@
                     <option value="" disabled selected>カテゴリを選択してください</option>
                 </select>
                 <!-- 3つめのセレクトボックス。2つめで選んだカテゴリに応じて、動的に選択肢を追加する -->
+
                 <select name="lesson_number" id="lesson_number" class="input-form" disabled> 
+
                     <option value="" disabled selected>レッスンNoを選択してください</option>
                 </select>
             </div>
@@ -89,10 +100,12 @@
     </div>
     <footer>
         <div class="footer_link">
+
             <button onclick="location.href='{{ url('/Carender')}}'">カレンダーへ戻る</button>
         </div>
     </footer>
     <script>
+
 
         ////////////////////////
         //バリデーションメッセージ//
@@ -101,6 +114,7 @@
         //メッセージ表示場所、時間の設定
 
         toastr.options = {
+
           "positionClass": "toast-top-center",
           "timeOut": "1500",
         };
@@ -116,6 +130,7 @@
             $(function () {
                     toastr.error('{!! (implode('<br>',$errors->all())) !!}');                
             });            
+
         @endif
 
         ////////////////////
@@ -123,6 +138,7 @@
         ////////////////////
 
         //ジャンルの値と、それに対応するカテゴリ一覧を格納しておく
+
         const categoryList = 
             {
                 "基礎課題": ["01_はじめに", "02_HTML／CSS", "03_Git", "04_ポートフォリオ", "05_PHP", "06_JavaScript", "07_SQL"],
@@ -151,7 +167,7 @@
             const selectCategoryName = document.getElementById('category_name'); //2つめのセレクトボックスを取得し
             selectCategoryName.disabled = false; //選択可能な状態にする
             selectCategoryName.options.length = 1; //オプションをリセット
-            
+
             //選択されたジャンルのメニュー一覧に対して処理をする
             categoryList[selectedGenre].forEach((value, index) => {
                 const option = document.createElement('option'); //option要素を新しく作る
@@ -160,13 +176,17 @@
                 selectCategoryName.appendChild(option); //セレクトボックスにoption要素を追加する
             });
 
+
             if(document.getElementById('lesson_number').options.length >1 ){ //レッスンナンバーが既に選択されているとき
+
                 var selectedCategory = selectCategoryName.selectedIndex //表示されているカテゴリーを取得
                 setLessonOptions(selectCategoryName[selectedCategory].value); //カテゴリーに合わせてレッスンナンバーのプルダウンを修正
             }
         }
 
+
         function setLessonOptions(selectedLesson){
+
             const selectLessonNumber = document.getElementById('lesson_number'); //3つめのセレクトボックスを取得し
             selectLessonNumber.disabled = false; //選択可能な状態にする
             selectLessonNumber.options.length = 1; //オプションをリセット
@@ -178,18 +198,21 @@
                 selectLessonNumber.appendChild(option); //セレクトボックスにoption要素を追加する
             });
         }
-        
+
         const genreSelect = document.getElementById('genre'); //ジャンルを選ぶためのセレクトボックスを指定 -- [2]
         const categorySelect = document.getElementById('category_name'); //ジャンルを選ぶためのセレクトボックスを指定 -- [2]
 
         //なんらかのジャンルが選択されたら（change）、処理を行う -- [3]
         genreSelect.addEventListener('change', (e) => {
+
             setCategoryOptions(e.target.value);  //選択されたジャンルを引数として関数に渡す
+
             //※e.target.valueはgenreSelectで選択された値
         })
 
         //なんらかのカテゴリが選択されたら（change）、処理を行う -- [3]
         categorySelect.addEventListener('change', (e) => {
+
             setLessonOptions(e.target.value);  //選択されたカテゴリを引数として関数に渡す
         })
 
@@ -397,4 +420,5 @@
       }
     </style>
 </body>
+
 </html>
