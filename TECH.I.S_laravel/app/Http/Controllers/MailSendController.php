@@ -18,31 +18,23 @@ class MailSendController extends Controller
     public static function send()
     {
         
-        // $toEmail = DB::table('users')->where('id', 1)->first('email');
-        $toEmail = DB::table('users')->select('email')->get();
+        // DBからメールアドレスを取得
+        $toEmail = DB::table('users')->select('id','email')->get();
         // オブジェクトを配列化
         $arrayMail = (array)$toEmail;
-
+        // 配列単純化
         $arrayMail = array_reduce($arrayMail, 'array_merge', []);
         $arrayMail =  json_decode(json_encode($arrayMail), true);
-        // メールアドレス取得。
-        // $mailAddress = $arrayMail['email'];
-
-        // $toMailAddr = [];
-        // foreach($arrayMail as $email){
-        //     $toEmail1 = (array)$email;
-        //     $toMailAdd = $toEmail1;
-        // }
-        // $count = count($toMailAdd);
         
-        // $to = [];
-        // for($i=0; $i<3;$i++){
-        //     $to[] = $arrayMail[$i];    
-        // };       
+        // メールアドレスがabc順になるので、id順にソートを行う。
+        foreach($arrayMail as $key => $value){
+            $idSort[$key] = $value['id'];
+        }
+        array_multisort($idSort , SORT_ASC,$arrayMail);
 
-        // var_dump($to);
-        $to = $arrayMail;
-
+        // 配列から2次元配列のemailを取得し$toに格納
+        $to = array_column($arrayMail,'email');
+        
         // DBからlearning_plansを取得
         $planAll = DB::table('learning_plans')->get();
         // objectを配列に
@@ -51,7 +43,12 @@ class MailSendController extends Controller
         $planLearn1 = array_reduce($planLearn, 'array_merge', []);
         $planLearnAll =  json_decode(json_encode($planLearn1), true);
         
-        for($i=0;$i<3;$i++){
+        // フィールド数を取得
+        $arrayCount = DB::table('users')->select('id')->get();
+        $countKey = count($arrayCount);
+
+        // 各idの配列を整列させる。
+        for($i=0;$i<$countKey;$i++){
             // idキーの削除
             unset($planLearnAll[$i]["id"]);
             // user_idキーの削除
@@ -84,29 +81,22 @@ class MailSendController extends Controller
 
         // 今日の日付取得
         $today = date("Y-m-d");
-        
-        // 今日の日付を配列化。
-        $arrayToday = array('today' => $today);
 
         // 今日の日付と学習予定日が同じ日付の学習項目を取得。
-        for($i=0;$i<3;$i++){
-            $planAll1[$i] = [];
-                foreach ($planAll[$i] as $key1 => $value1) {
-                    foreach ($arrayToday as $value2) {
-                        if ($value1 == $value2) {
-                            $planAll1[$i] = $key1;
-                        }
-                }
-            }
+        $result[] = [];
+        for($i=0;$i<$countKey;$i++){
+            $result[$i] = array_keys($planAll[$i],$today);
         }
+
         // メールを送る。
-        // for($i=0;$i<3;$i++){
-            if(!empty($planAll1)){
-                Mail::to($to)->send(new SendMail($planAll1));
-            }
+        // for($i=0;$i<$countKey;$i++){
+        //     if(!empty($result[$i])){
+        //         Mail::to($to[$i])->send(new SendMail($result[$i]));
+        //     }
         // }        
         
-        var_dump($to[0],$planAll1[0]);
-        // return redirect('/calendar');
+        // var_dump($result[1]);
+        // var_dump($to[1]);
+        // return redirect('/Calendar');
     }
 }

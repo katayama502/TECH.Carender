@@ -1016,13 +1016,6 @@
         document.addEventListener("DOMContentLoaded", function() {
             var calendarEl = document.getElementById("calendar");
 
-            // xhr = new XMLHttpRequest();
-            // function post() {
-            //     xhr.open('POST', 'calendars.index.blade.php', true);
-            //     xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
-            // }
-
-
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 plugins: ["interaction", "dayGrid", "timeGrid", ],
                 //プラグイン読み込み

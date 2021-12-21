@@ -10,7 +10,7 @@
 
     <p>本日の学習予定は、下記の通りです。</p>
     ーーーーーーーーーーーーーーーー
-    @foreach ($planAll1 as $plan)
+    @foreach ((array)$planAll1 as $plan)
     <p>・{{$plan}}</p>               
     @endforeach
 
