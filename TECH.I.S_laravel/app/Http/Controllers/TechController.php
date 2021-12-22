@@ -35,20 +35,6 @@ class TechController extends Controller
   }
 
 
-  public function basics(){
-    return view('graph_basics');
-  }
-
-
-  public function application(){
-    return view('graph_application');
-  }
-
-
-  public function development(){
-    return view('graph_development');
-  }
-
 
 
   public function calender_view(){
@@ -67,6 +53,16 @@ class TechController extends Controller
 
     return redirect('Calendar_viwe')->with('flash_message', 'ログインが成功しました');
   }
+
+  public function BackCalendar(){
+    //セッションの処理//
+    $user=$this->login();
+    if(!$user){
+      return view('/');
+    }
+    return redirect('Calendar_viwe');
+  }
+
 
   public function getCalendar_admin(){
     //セッションの処理//
@@ -161,6 +157,12 @@ class TechController extends Controller
         'sain_User_name' => 'required|email|unique:administrators,email',
         'sain_User_pass' => 'min:8|regex:/\A(?=.?[a-z])(?=.?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/',
       ]);
+
+      $user = User::where('email',$sain_User_name) -> first();
+      $user_email=$user->email;
+      if(!empty($user_email)){
+        return redirect('New_sain')->with('flash_message', '既にそのユーザーは登録されています！');
+      }
       $sain_User_name = $request->sain_User_name;
       $sain_User_pass = password_hash($request->sain_User_pass,PASSWORD_DEFAULT);
       $date = [
@@ -262,6 +264,12 @@ public function admin_add_1(Request $request){
     'admin_sain_pass' => 'min:8|regex:/\A(?=.?[a-z])(?=.?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/',
   ]);
   
+  $user = User::where('email',$admin_sain_name) -> first();
+      $admin_email=$user->email;
+      if(!empty($admin_email)){
+        return redirect('sain_admin')->with('flash_message', '既にそのユーザーは登録されています！');
+      }
+
   $admin_sain_name = $request->admin_sain_name;
   $admin_sain_pass = password_hash($request->admin_sain_pass,PASSWORD_DEFAULT);
 

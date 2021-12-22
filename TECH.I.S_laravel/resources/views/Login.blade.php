@@ -45,8 +45,8 @@
             @endif
         </div>
         <br>
-        <div class="item">
-            <button type="submit" class="btn btn--yellow btn--cubic">ログイン</button>
+        <div class="item"style="width:53%">
+            <button type="submit" style="font-size: 0.8rem;" class="btn btn--yellow btn--cubic">ログイン</button>
         </div>
 
         <br>

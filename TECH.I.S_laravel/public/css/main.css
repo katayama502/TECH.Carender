@@ -102,10 +102,29 @@ button.btn--yellow:hover {
   color: #000;
   background: #fff20a;
   border-bottom: 2px solid #ccc100;
-
+}
 
 .main_botan{
   margin-left: 60%;
   margin-top: -25%;
 
 }
+
+
+
+.toggle_btn {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  transition: all 0.5s;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.detail{
+  display:none;
+}
+.detail ,.open{
+  background-color: rgb(238, 243, 110);
+}
+
