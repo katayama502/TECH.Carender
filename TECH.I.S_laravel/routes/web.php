@@ -31,6 +31,7 @@ Route::get('/',[TechController::class,'index']);
 Route::get('login', [TechController::class,'getLog']);
 Route::get('New_sain', [TechController::class,'getNew']);
 Route::get('Calendar', [TechController::class,'getCalendar']);
+Route::get('Back', [TechController::class,'BackCalendar']);
 Route::get('getCalendar', [TechController::class,'getCalendar_admin']);
 Route::get('Calendar_viwe', [TechController::class,'calender_view']);
 Route::get('goal_input', [TechController::class,'getgoal']);
@@ -71,7 +72,5 @@ Route::get('/mail',[App\Http\Controllers\MailSendController::class, 'send']);
 
 //進捗確認グラフ//
 Route::get('graph_main', [TechController::class,'main']);
-Route::get('graph_basics', [TechController::class,'basics']);
-Route::get('graph_application', [TechController::class,'application']);
-Route::get('graph_development', [TechController::class,'development']);
+
 
