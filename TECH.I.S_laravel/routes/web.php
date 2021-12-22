@@ -67,10 +67,10 @@ Route::post('/admin_check',[TechController::class,'admin_check']);
 Route::get('/',[TechController::class,'index']);
 Route::get('login', [TechController::class,'getLog']);
 Route::get('New_sain', [TechController::class,'getNew']);
-Route::get('Calendar', [TechController::class,'getCalendar']);
+//Route::get('Calendar', [TechController::class,'getCalendar']);
 Route::get('Back', [TechController::class,'BackCalendar']);
 Route::get('getCalendar', [TechController::class,'getCalendar_admin']);
-Route::get('Calendar_viwe', [TechController::class,'calender_view']);
+//Route::get('Calendar_viwe', [TechController::class,'calender_view']);
 Route::get('goal_input', [TechController::class,'getgoal']);
 
 
@@ -84,10 +84,10 @@ Route::group(['middleware' => 'basicauth'], function() {
 
 //予定・実績・イベント登録
 Route::post('goal_input/{date}', [App\Http\Controllers\Learning_planController::class, 'edit']);
-Route::get('goal_input', [App\Http\Controllers\Learning_planController::class, 'index']);
-Route::post('plan_delete/{learningplan}', [App\Http\Controllers\Learning_planController::class, 'deletePlan']);
-Route::post('record_delete/{learningrecord}', [App\Http\Controllers\Learning_planController::class, 'deleteRecord']);
-Route::post('memo_edit', [App\Http\Controllers\MemoController::class, 'edit']);
+Route::get('goal_input/{date}', [App\Http\Controllers\Learning_planController::class, 'index']);
+Route::post('plan_delete/{learningplan}/{date}', [App\Http\Controllers\Learning_planController::class, 'deletePlan']);
+Route::post('record_delete/{learningrecord}/{date}', [App\Http\Controllers\Learning_planController::class, 'deleteRecord']);
+Route::post('memo_edit/{date}', [App\Http\Controllers\MemoController::class, 'edit']);
 Route::post('memo_delete', [App\Http\Controllers\MemoController::class, 'delete']);
 Route::get('event_input', [App\Http\Controllers\EventController::class, 'index']);
 Route::post('event_edit', [App\Http\Controllers\EventController::class, 'edit']);
