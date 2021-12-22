@@ -73,4 +73,3 @@ class Learning_plan extends Model
         "開発課題_02_自主制作_No3" => "C_2_3",
     ];    
 }
-
