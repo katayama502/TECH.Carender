@@ -115,6 +115,8 @@ return [
         'Introduction_name' => [
             'regex' => '正しくメールアドレスを入力してください。',
         ],
+        
+
     ],
 
     /*
