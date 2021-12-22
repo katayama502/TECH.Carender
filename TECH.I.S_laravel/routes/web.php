@@ -22,8 +22,11 @@ use App\Http\Controllers\TechController;
 
 
 
-// カレンダー表示 /views/calendar/index.blade.php
+// ユーザー用カレンダー表示 /views/calendar/index.blade.php
 Route::get('/Calendar',[App\Http\Controllers\CalendarController::class, 'setEvents']) ;
+
+// 管理者用用カレンダー表示 
+Route::get('/Calendar_admin',[App\Http\Controllers\CalendarAdminController::class, 'setEvents']) ;
 
 //ユーザー用//
 
@@ -111,6 +114,11 @@ Route::get('/mail',[App\Http\Controllers\MailSendController::class, 'send']);
 // カレンダーから日付を取得。
 Route::get('/getDate/{date}', [App\Http\Controllers\CalendarController::class, 'getDate']);
 Route::post('/getDate/{date}', [App\Http\Controllers\CalendarController::class, 'getDate']);
+
+
+// カレンダーから日付を取得。(管理者用)
+Route::get('/getDateAdmin/{date}', [App\Http\Controllers\CalendarAdminController::class, 'getDateAdmin']);
+Route::post('/getDateAdmin/{date}', [App\Http\Controllers\CalendarAdminController::class, 'getDateAdmin']);
 
 
 //進捗確認グラフ//
