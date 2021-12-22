@@ -12,7 +12,7 @@ class CalendarAdminController extends Controller
 
     public function setEvents()
     {
-        // user_id 取得
+        // id 取得
         $id = session()->get('id');
         if(empty($id)){
             return redirect('/');
