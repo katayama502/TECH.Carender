@@ -56,8 +56,8 @@ class CalendarController extends Controller
         // $date = session()->get('date');
 
         
-        return redirect('/goal_input') ->with([
-            'date' => $date,
+        return redirect('/goal_input/'.$date) ->with([
+            //'date' => $date,
         ]);
     }
 

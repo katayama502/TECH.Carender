@@ -14,8 +14,7 @@
 <body>
     <header>
         <div class="container"> 
-
-            <h2>2021年 11月 10日</h2>
+            <h2>{{date('Y年m月d日',  strtotime($date))}}</h2>
         </div>
     </header>
     <div class="plan-record-wrapper">
@@ -26,7 +25,7 @@
                 <h2>目標</h2>
                 <div class="scrollbox">
                     @foreach ($learningplans as $learningplan)
-                    <form action="{{ url('plan_delete/' .$learningplan) }}" method="post" class="form-horizontal">
+                    <form action="{{ url('plan_delete/' .$learningplan.'/'.$date) }}" method="post" class="form-horizontal">
                         {{ csrf_field() }}
                         <p class="learning_plan">{{$learningplan}}</p>
 
@@ -40,7 +39,7 @@
                 <h2>実績</h2>
                 <div class="scrollbox">
                     @foreach ($learningrecords as $learningrecord)
-                    <form action="{{ url('record_delete/' .$learningrecord) }}" method="post" class="form-horizontal">
+                    <form action="{{ url('record_delete/' .$learningrecord.'/'.$date) }}" method="post" class="form-horizontal">
                         {{ csrf_field() }}
                         <p class="learning_plan">{{$learningrecord}}</p>
 
@@ -56,7 +55,7 @@
             <h2>学習項目選択</h2>
         </div>      
 
-        <form action="{{ url('goal_input/2020-10-30') }}" method="post" class="container">
+        <form action="{{ url('goal_input/'.$date) }}" method="post" class="container">
             {{ csrf_field() }}
             <div class="item-input">
                 <!-- 1つめのセレクトボックス。これは静的に生成されている（最初から内容が決まっている） -->
@@ -87,7 +86,7 @@
         <div class="container">
             <h2>メモ</h2>
         </div>
-        <form action="{{ url('memo_edit') }}" method="post" class="container">
+        <form action="{{ url('memo_edit/'.$date) }}" method="post" class="container">
             {{ csrf_field() }}
             <div class="memo-input">
                 <textarea name="memo" class="text-form">{{ $memo }}</textarea>
@@ -101,7 +100,7 @@
     <footer>
         <div class="footer_link">
 
-            <button onclick="location.href='{{ url('/Carender')}}'">カレンダーへ戻る</button>
+            <button onclick="location.href='{{ url('/Calendar')}}'">カレンダーへ戻る</button>
         </div>
     </footer>
     <script>
