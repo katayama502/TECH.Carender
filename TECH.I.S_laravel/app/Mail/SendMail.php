@@ -16,10 +16,11 @@ class SendMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+
+
+    public function __construct($planAll1)
     {
-        //
-        
+        $this -> planAll1 =$planAll1;
     }
 
     /**
@@ -29,8 +30,9 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.test')
-                    ->from('yamamitchi@gmail.com',' TECH.I.S')
-                    ->subject('今週の予定');
+        return $this->view('emails.test') 
+                    ->with(['planAll1'=>$this->planAll1])
+                    ->from('techyamamichi@gamil.com',' TECH.I.S')
+                    ->subject('今日の予定');
     }
 }

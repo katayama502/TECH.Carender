@@ -44,10 +44,13 @@
         <div class="item">
             <button type="submit" class="btn btn--yellow btn--cubic">登録</button>
         </div>
+
         <br>
+
         <div class="item">
             <a href="{{ url('/') }}"class="btn btn--yellow btn--cubic">戻る</a>
         </div>
+
         </form>
     </div>
 </div>

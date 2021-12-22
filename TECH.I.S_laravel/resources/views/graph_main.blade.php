@@ -3,10 +3,12 @@
 <link rel="stylesheet" href="{{ asset('css/main.css') }}">
  
 
+
 <div class="toggle_btn">
       <span></span>
       <span></span>
     </div>
+
 	
 	
 	
@@ -43,9 +45,11 @@
 	</div>
 	
 
+
 </div>
 <?php
 use App\Models\learning_record;
+
 $count_A=0;
 $count_A_1=0;
 $count_A_2=0;
@@ -61,6 +65,7 @@ $count_B_3=0;
 $count_C=0;
 $count_C_1=0;
 $count_C_2=0;
+
 
 $user_records = learning_record::where('user_id',$user_id) -> first();
 // 基礎課題
@@ -407,6 +412,7 @@ foreach($id_pass_C_1 as $value_C_1){
 	if(!empty($value_C_1)){
 		$count_C_1=$count_C_1+1;
 	}
+
 }
 $count_C_1 = 33*$count_C_1;
 if($count_C_1>90){
@@ -426,12 +432,16 @@ if($count_C_2>90){
 ?>
 <!-- 基礎 -->
 
+
 <script>
 	var ctx = document.getElementById('myChart_A').getContext('2d');
+
 	var chart = new Chart(ctx, {
 		type: 'horizontalBar',
 		data: {
+
 			labels: ['基礎課題'],
+
 			datasets: [{
 				label: '基礎課題進捗状況',
 				data: [<?php echo $count_A ?>],
@@ -440,7 +450,7 @@ if($count_C_2>90){
 			}]
 		},
 		options: {
-			
+
 			scales: {
         		xAxes: [          
             			{
@@ -457,8 +467,10 @@ if($count_C_2>90){
 					]
     			}
     		}
+
 	});
 </script>
+
 
 <script>
 	var ctx = document.getElementById('myChart_A_1').getContext('2d');
@@ -991,4 +1003,5 @@ $('.button_C').on('click', function() {
       }
     });
 </script>
+
 

@@ -36,6 +36,7 @@ class TechController extends Controller
 
 
 
+
   public function calender_view(){
     return view('Calendar');
   }
@@ -49,6 +50,7 @@ class TechController extends Controller
     if(!$user){
       return view('/');
     }
+
     return redirect('Calendar_viwe')->with('flash_message', 'ログインが成功しました');
   }
 
@@ -69,6 +71,7 @@ class TechController extends Controller
       return view('admin');
     }
     return redirect('Calendar_viwe')->with('flash_message', 'ログインが成功しました');
+
   }
 
 
@@ -95,7 +98,7 @@ class TechController extends Controller
   
   //セッション確認//
   private function login(){
-   
+
     $user_id = session()->get('user_id');
     if(empty($user_id)){
       return false;
@@ -106,6 +109,7 @@ class TechController extends Controller
     }
     return $user;
   }
+
 
   private function adminlogin(){
    
@@ -119,6 +123,7 @@ class TechController extends Controller
     }
     return $user;
   }
+
 
 
 
@@ -246,10 +251,12 @@ public function admin_add_1(Request $request){
   $admin_sain_pass = $request->admin_sain_pass;
 
   if(empty($admin_sain_name)){
+
     return redirect('sain_admin')->with('flash_message', 'メールアドレスを記入してください！');
   }
   if(empty( $admin_sain_pass)){
     return redirect('sain_admin')->with('flash_message', '半角英数８文字で記入してください！');
+
   }
 
   $request->validate([
@@ -271,7 +278,9 @@ public function admin_add_1(Request $request){
     'password' => $admin_sain_pass,
   ];
   Administrators::insert($date);   
+
   return redirect('admin');
+
 }
 
 
@@ -285,17 +294,20 @@ public function admin_check(Request $request){
   $admin_login_pass = $request->admin_login_pass;
 
   if(empty($admin_login_name)){
+
     return redirect('login_admin')->with('flash_message', 'メールアドレスを記入してください！');
   }
 
   if(empty($admin_login_pass)){
     return redirect('login_admin')->with('flash_message', '正しくパスワードを記入してください！');
+
   }
 
   $request->validate([
     'admin_login_name' => 'required|min:8',
     'admin_login_pass' => 'required',
   ]);
+
 
   $admin_data = Administrators::where('email',$admin_login_name) -> first();
   if(empty($admin_data)){
@@ -305,6 +317,7 @@ public function admin_check(Request $request){
   if(password_verify($admin_login_pass,$pass2)){
     session(['admin_id'=> $admin_data->id]);
     return redirect('getCalendar');
+
   }else{
     return redirect('login_admin');
   }  

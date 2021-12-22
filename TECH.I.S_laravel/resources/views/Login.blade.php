@@ -48,10 +48,12 @@
         <div class="item"style="width:53%">
             <button type="submit" style="font-size: 0.8rem;" class="btn btn--yellow btn--cubic">ログイン</button>
         </div>
+
         <br>
         <div class="item">
             <a href="{{ url('/') }}"class="btn btn--yellow btn--cubic">戻る</a>
         </div>
+
     </div>
 </div>
 </form>
