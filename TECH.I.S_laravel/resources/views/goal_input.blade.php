@@ -99,7 +99,6 @@
     </div>
     <footer>
         <div class="footer_link">
-
             <button onclick="location.href='{{ url('/Calendar')}}'">カレンダーへ戻る</button>
         </div>
     </footer>

@@ -70,7 +70,7 @@ class TechController extends Controller
     if(!$user){
       return view('admin');
     }
-    return redirect('Calendar_viwe')->with('flash_message', 'ログインが成功しました');
+    return redirect('Calendar_admin')->with('flash_message', 'ログインが成功しました');
 
   }
 
