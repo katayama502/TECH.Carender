@@ -46,16 +46,7 @@ Route::group(['middleware' => 'basicauth'], function() {
     Route::get('admin', [App\Http\Controllers\TechController::class, 'getAdmin'])->name('top');
     });
 
-//予定・実績・イベント登録
-Route::post('goal_input/{user_id}/{date}', [App\Http\Controllers\Learning_planController::class, 'edit']);
-Route::get('goal_input', [App\Http\Controllers\Learning_planController::class, 'index']);
-Route::post('plan_delete/{learningplan}', [App\Http\Controllers\Learning_planController::class, 'deletePlan']);
-Route::post('record_delete/{learningrecord}', [App\Http\Controllers\Learning_planController::class, 'deleteRecord']);
-Route::post('memo_edit', [App\Http\Controllers\MemoController::class, 'edit']);
-Route::post('memo_delete', [App\Http\Controllers\MemoController::class, 'delete']);
-Route::get('event_input', [App\Http\Controllers\EventController::class, 'index']);
-Route::post('event_edit', [App\Http\Controllers\EventController::class, 'edit']);
-Route::post('event_delete/{event_delete}', [App\Http\Controllers\EventController::class, 'delete']);
+
 
 //DBへのアドレス・PASSの登録 //
 Route::post('/new_add',[TechController::class,'add']);
@@ -91,10 +82,10 @@ Route::get('goal_input/{date}', [App\Http\Controllers\Learning_planController::c
 Route::post('plan_delete/{learningplan}/{date}', [App\Http\Controllers\Learning_planController::class, 'deletePlan']);
 Route::post('record_delete/{learningrecord}/{date}', [App\Http\Controllers\Learning_planController::class, 'deleteRecord']);
 Route::post('memo_edit/{date}', [App\Http\Controllers\MemoController::class, 'edit']);
-Route::post('memo_delete', [App\Http\Controllers\MemoController::class, 'delete']);
-Route::get('event_input', [App\Http\Controllers\EventController::class, 'index']);
-Route::post('event_edit', [App\Http\Controllers\EventController::class, 'edit']);
-Route::post('event_delete/{event_delete}', [App\Http\Controllers\EventController::class, 'delete']);
+Route::post('memo_delete/{date}', [App\Http\Controllers\MemoController::class, 'delete']);
+Route::get('event_input/{date}', [App\Http\Controllers\EventController::class, 'index']);
+Route::post('event_edit/{date}', [App\Http\Controllers\EventController::class, 'edit']);
+Route::post('event_delete/{event_delete}/{date}', [App\Http\Controllers\EventController::class, 'delete']);
 
 //DBへのアドレス・PASSの登録 //
 Route::post('/new_add',[TechController::class,'add']);

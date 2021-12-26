@@ -13,9 +13,9 @@ class CalendarAdminController extends Controller
     public function setEvents()
     {
         // id 取得
-        $id = session()->get('id');
+        $id = session()->get('admin_id');
         if(empty($id)){
-            return redirect('/');
+            return redirect('/admin');
         }
         
         
@@ -46,8 +46,8 @@ class CalendarAdminController extends Controller
         // $date_day = substr($date,8,2);
         // $date = session()->get('date');
 
-        return redirect('/event_input') ->with([
-            'date' => $date,
+        return redirect('/event_input/'.$date) ->with([
+            //'date' => $date,
         ]);
     }
 
