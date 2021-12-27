@@ -226,7 +226,7 @@ class TechController extends Controller
 
     if(password_verify($login_User_pass,$pass)){
       session(['user_id'=> $user->id]);
-      return redirect('Calendar');
+      return redirect('Calendar')->with('flash_message', 'ログインに成功しました');
     }else{
       session()->flash('flash_message', 'ログインに失敗しました');
       $request->validate([
@@ -265,7 +265,7 @@ public function admin_add_1(Request $request){
   ]);
   
   $user = User::where('email',$admin_sain_name) -> first();
-      $admin_email=$user->email;
+      $admin_email=$user;
       if(!empty($admin_email)){
         return redirect('sain_admin')->with('flash_message', '既にそのユーザーは登録されています！');
       }
@@ -316,7 +316,7 @@ public function admin_check(Request $request){
   $pass2 = $admin_data->password;
   if(password_verify($admin_login_pass,$pass2)){
     session(['admin_id'=> $admin_data->id]);
-    return redirect('getCalendar');
+    return redirect('Calendar_admin')->with('flash_message', 'ログインに成功しました');
 
   }else{
     return redirect('login_admin');

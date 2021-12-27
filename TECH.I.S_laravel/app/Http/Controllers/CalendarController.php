@@ -40,6 +40,7 @@ class CalendarController extends Controller
                 'param_json_date' => $param_json_date,
                 'param_json_plans' => $param_json_plans,
                 'param_json_records' => $param_json_records,
+                'flash_message'=>'ログインに成功しました',
             ]
         );
     }

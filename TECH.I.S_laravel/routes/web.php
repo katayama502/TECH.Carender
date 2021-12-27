@@ -97,7 +97,7 @@ Route::post('/admin_check',[TechController::class,'admin_check']);
 
 // ログアウト
 Route::get('/logout',[App\Http\Controllers\CalendarController::class, 'getLogout']);
-
+Route::get('/admin_logout',[App\Http\Controllers\CalendarAdminController::class, 'getLogout']);
 // メール送付
 Route::get('/mail',[App\Http\Controllers\MailSendController::class, 'send']);
 

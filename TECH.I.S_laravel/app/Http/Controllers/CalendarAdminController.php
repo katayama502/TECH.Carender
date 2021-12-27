@@ -13,9 +13,11 @@ class CalendarAdminController extends Controller
     public function setEvents()
     {
         // id 取得
-        $id = session()->get('admin_id');
-        if(empty($id)){
-            return redirect('/admin');
+
+        $admin_id = session()->get('admin_id');
+        if(empty($admin_id)){
+            return redirect('/');
+
         }
         
         
@@ -31,6 +33,7 @@ class CalendarAdminController extends Controller
             [
                 'param_json_body' => $param_json_body, 
                 'param_json_date' => $param_json_date,
+                'flash_message'=>'ログインに成功しました',
             ]
         );
     }
@@ -50,6 +53,12 @@ class CalendarAdminController extends Controller
             //'date' => $date,
         ]);
     }
-
+    public function getLogout(Request $request)
+    {
+        // ユーザー情報をセッションから削除
+        $request->is_force_logout = 1;
+        
+        return redirect('/admin');
+    }
 
 }

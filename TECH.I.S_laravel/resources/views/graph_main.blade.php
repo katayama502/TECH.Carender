@@ -12,11 +12,11 @@
 	
 	
 	
-	<a href="{{ url('Back') }}"　>戻る</a>
+	<a href="{{ url('/Calendar') }}" class="btn2 btn--yellow btn--cubic"　>戻る</a>
 	<div class="glaf">
 	<!-- 基礎課題 -->
 	<canvas id="myChart_A" width="100%" height="15%"></canvas>
-	<button class="button_A">詳細</button>
+	<button class="button_A btn--yellow">詳細</button>
 	<div id="ChartA" class="detail">
 	<canvas id="myChart_A_1" width="100%" height="15%"></canvas>
 	<canvas id="myChart_A_2" width="100%" height="15%"></canvas>
@@ -29,7 +29,7 @@
 	
 	<!-- 応用課題 -->
 	<canvas id="myChart_B" width="100%" height="15%"></canvas>
-	<button class="button_B">詳細</button>
+	<button class="button_B btn--yellow">詳細</button>
 	<div id="ChartB" class="detail">
 	<canvas id="myChart_B_1" width="100%" height="15%"></canvas>
 	<canvas id="myChart_B_2" width="100%" height="15%"></canvas>
@@ -38,7 +38,7 @@
 	
 	<!-- 開発課題 -->
 	<canvas id="myChart_C" width="100%" height="15%"></canvas>
-	<button class="button_C">詳細</button>
+	<button class="button_C btn--yellow">詳細</button>
 	<div id="ChartC" class="detail">
 	<canvas id="myChart_C_1" width="100%" height="15%"></canvas>
 	<canvas id="myChart_C_2" width="100%" height="15%"></canvas>
@@ -434,14 +434,15 @@ if($count_C_2>90){
 
 
 <script>
+	Chart.defaults.global.defaultFontSize = 20;
 	var ctx = document.getElementById('myChart_A').getContext('2d');
-
+	
 	var chart = new Chart(ctx, {
 		type: 'horizontalBar',
 		data: {
-
+			
 			labels: ['基礎課題'],
-
+			
 			datasets: [{
 				label: '基礎課題進捗状況',
 				data: [<?php echo $count_A ?>],
@@ -450,14 +451,15 @@ if($count_C_2>90){
 			}]
 		},
 		options: {
-
+			
 			scales: {
         		xAxes: [          
             			{
 							ticks: {          
 								min: 0,      
 								max: 100,     
-								stepSize: 10 
+								stepSize: 10 ,
+								fontSize: 20 
 							},
 							scaleLabel: {
       							display: true,
@@ -493,7 +495,8 @@ if($count_C_2>90){
 							ticks: {          
 								min: 0,      
 								max: 100,     
-								stepSize: 10 
+								stepSize: 10 ,
+								fontSize: 20 
 							},
 							scaleLabel: {
       							display: true,
@@ -527,7 +530,8 @@ if($count_C_2>90){
 							ticks: {          
 								min: 0,      
 								max: 100,     
-								stepSize: 10 
+								stepSize: 10 ,
+								fontSize: 20  
 							},
 							scaleLabel: {
       							display: true,
@@ -561,7 +565,8 @@ if($count_C_2>90){
 							ticks: {          
 								min: 0,      
 								max: 100,     
-								stepSize: 10 
+								stepSize: 10 ,
+								fontSize: 20  
 							},
 							scaleLabel: {
       							display: true,
@@ -595,7 +600,8 @@ if($count_C_2>90){
 							ticks: {          
 								min: 0,      
 								max: 100,     
-								stepSize: 10 
+								stepSize: 10 ,
+								fontSize: 20  
 							},
 							scaleLabel: {
       							display: true,
@@ -629,7 +635,8 @@ if($count_C_2>90){
 							ticks: {          
 								min: 0,      
 								max: 100,     
-								stepSize: 10 
+								stepSize: 10 ,
+								fontSize: 20  
 							},
 							scaleLabel: {
       							display: true,
@@ -663,7 +670,8 @@ if($count_C_2>90){
 							ticks: {          
 								min: 0,      
 								max: 100,     
-								stepSize: 10 
+								stepSize: 10 ,
+								fontSize: 20  
 							},
 							scaleLabel: {
       							display: true,
@@ -697,7 +705,8 @@ if($count_C_2>90){
 							ticks: {          
 								min: 0,      
 								max: 100,     
-								stepSize: 10 
+								stepSize: 10 ,
+								fontSize: 20  
 							},
 							scaleLabel: {
       							display: true,
@@ -731,7 +740,8 @@ if($count_C_2>90){
 							ticks: {          
 								min: 0,      
 								max: 100,     
-								stepSize: 10 
+								stepSize: 10 ,
+								fontSize: 20 
 							},
 							scaleLabel: {
       							display: true,
@@ -764,7 +774,8 @@ if($count_C_2>90){
 							ticks: {          
 								min: 0,      
 								max: 100,     
-								stepSize: 10 
+								stepSize: 10 ,
+								fontSize: 20  
 							},
 							scaleLabel: {
       							display: true,
@@ -797,7 +808,8 @@ if($count_C_2>90){
 							ticks: {          
 								min: 0,      
 								max: 100,     
-								stepSize: 10 
+								stepSize: 10 ,
+								fontSize: 20  
 							},
 							scaleLabel: {
       							display: true,
@@ -830,7 +842,8 @@ if($count_C_2>90){
 							ticks: {          
 								min: 0,      
 								max: 100,     
-								stepSize: 10 
+								stepSize: 10 ,
+								fontSize: 20  
 							},
 							scaleLabel: {
       							display: true,
@@ -864,7 +877,8 @@ if($count_C_2>90){
 							ticks: {          
 								min: 0,      
 								max: 100,     
-								stepSize: 10 
+								stepSize: 10 ,
+								fontSize: 20  
 							},
 							scaleLabel: {
       							display: true,
@@ -897,7 +911,8 @@ if($count_C_2>90){
 							ticks: {          
 								min: 0,      
 								max: 100,     
-								stepSize: 10 
+								stepSize: 10 ,
+								fontSize: 20  
 							},
 							scaleLabel: {
       							display: true,
@@ -930,7 +945,8 @@ if($count_C_2>90){
 							ticks: {          
 								min: 0,      
 								max: 100,     
-								stepSize: 10 
+								stepSize: 10 ,
+								fontSize: 20  
 							},
 							scaleLabel: {
       							display: true,
