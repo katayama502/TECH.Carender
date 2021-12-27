@@ -13,7 +13,7 @@ class EventController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function index(Request $request)
+    public function index(Request $request, $date)
     {
         // セッション確認
         $administrator_id = session()->get('admin_id');
@@ -22,17 +22,18 @@ class EventController extends Controller
         }
 
         // イベント情報取得
-        //$Event = Event::where('date','2020-10-30')->where('administrator_id',$administrator_id);
-        $Event = Event::where('date','2020-10-30');
+        //$Event = Event::where('date',$date)->where('administrator_id',$administrator_id);
+        $Event = Event::where('date',$date);
         if ($Event === null) {
             $EventResponse = array();
         }else{
-        //$Event = Event::where('date','2020-10-30')->where('administrator_id',$administrator_id)->get()->toArray();
-        $Event = Event::where('date','2020-10-30')->get()->toArray();
+        //$Event = Event::where('date',$date)->where('administrator_id',$administrator_id)->get()->toArray();
+        $Event = Event::where('date',$date)->get()->toArray();
         $EventResponse = $Event;
         }
         return view('event_input', [
             'Events' => $EventResponse,
+            'date' => $date
         ]);
     }
 
@@ -42,7 +43,7 @@ class EventController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function edit(Request $request)
+    public function edit(Request $request, $date)
     {
         // セッション確認
         $administrator_id = session()->get('admin_id');
@@ -64,11 +65,11 @@ class EventController extends Controller
         Event::create([
             'administrator_id' => $administrator_id,
             'body' => $request->event_name,
-            'date' => "2020-10-30",
+            'date' => $date,
             'start_time' => date('g:i',strtotime($request->start_time)),
             'end_time' => date('g:i',strtotime($request->end_time))
         ]);
-        return redirect('event_input')->with('flash_message', '登録が完了しました');
+        return redirect('/event_input/'.$date)->with('flash_message', '登録が完了しました');
         }
     }
 
@@ -78,7 +79,7 @@ class EventController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function delete(Request $request, $id)
+    public function delete(Request $request, $id ,$date)
     {
         // セッション確認
         $administrator_id = session()->get('admin_id');
@@ -86,7 +87,7 @@ class EventController extends Controller
             return redirect('/admin');
         }
         Event::find($id)->delete();
-        return redirect('event_input')->with('flash_message', '削除が完了しました');
+        return redirect('/event_input/'.$date)->with('flash_message', '削除が完了しました');
     }
     
 }

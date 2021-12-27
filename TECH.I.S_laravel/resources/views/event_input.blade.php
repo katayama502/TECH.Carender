@@ -15,7 +15,7 @@
 <body>
     <header>
         <div class="container"> 
-            <h2>2021年 11月 10日</h2>
+            <h2>{{date('Y年m月d日',  strtotime($date))}}</h2>
         </div>
     </header>
         <div class="event-wrapper">
@@ -24,7 +24,7 @@
                     <h2>イベント予定</h2>
                     <div class="scrollbox">
                         @foreach ($Events as $key => $Event)
-                        <form action="{{ url('event_delete/'.$Event['id'] ) }}" method="post" class="form-horizontal">
+                        <form action="{{ url('event_delete/'.$Event['id'].'/'.$date ) }}" method="post" class="form-horizontal">
                             {{ csrf_field() }}
                             <p class="event_plan">{{ $Event["body"]."  ".date('g:i',strtotime($Event["start_time"]))."~".date('g:i',strtotime($Event["end_time"])) }}</p>
                             <button type="submit" class="btn--delete" name="submit" id = "sub1" value="plan">削除</button>
@@ -38,7 +38,7 @@
             <div class="container">
                 <h2>イベント予定入力</h2>
             </div> 
-            <form action="{{ url('event_edit') }}" method="post" class="container">
+            <form action="{{ url('event_edit'.'/'.$date) }}" method="post" class="container">
                 {{ csrf_field() }}
                 <div class="item-input">
                     <div class="event_name">
@@ -62,7 +62,7 @@
 
         <footer>
             <div class="footer_link">
-                <button onclick="location.href='{{ url('/Calendar')}}'">カレンダーへ戻る</button>
+                <button onclick="location.href='{{ url('/Calendar_admin')}}'">カレンダーへ戻る</button>
             </div>
         </footer>
         
