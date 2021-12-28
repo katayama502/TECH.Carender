@@ -159,7 +159,7 @@ class TechController extends Controller
       ]);
 
       $user = User::where('email',$sain_User_name) -> first();
-      $user_email=$user->email;
+      $user_email=$user;
       if(!empty($user_email)){
         return redirect('New_sain')->with('flash_message', '既にそのユーザーは登録されています！');
       }
@@ -180,7 +180,7 @@ class TechController extends Controller
 
         learning_plan::insert($date_user);
         learning_record::insert($date_user);
-        return redirect('/');
+        return redirect('/')->with('flash_message', '登録が完了しました。');
 }
 
 
@@ -279,7 +279,7 @@ public function admin_add_1(Request $request){
   ];
   Administrators::insert($date);   
 
-  return redirect('admin');
+  return redirect('admin')->with('flash_message', '登録が完了しました。');
 
 }
 
@@ -319,7 +319,7 @@ public function admin_check(Request $request){
     return redirect('Calendar_admin')->with('flash_message', 'ログインに成功しました');
 
   }else{
-    return redirect('login_admin');
+    return redirect('login_admin')->with('flash_message', 'ログインに失敗しました');
   }  
   
   }

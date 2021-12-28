@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    
     <title>TECH.I.S_システム管理者画面</title>
 </head>
 
@@ -25,4 +29,16 @@
     </div>
 </div>
 </body>
+        <script>
+            toastr.options = {
+                "positionClass": "toast-top-center",
+                "timeOut": "2000",
+            };
+            @if (session('flash_message'))
+                $(function () {
+                    toastr.success('{{ session('flash_message') }}');              
+                });
+            @endif
+        
+        </script>
 </html>
