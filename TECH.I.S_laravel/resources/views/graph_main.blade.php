@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <link rel="stylesheet" href="{{ asset('css/main.css') }}">
@@ -11,39 +12,39 @@
 
 	
 	
-	
-	<a href="{{ url('/Calendar') }}" class="btn2 btn--yellow btn--cubic"　>戻る</a>
-	<div class="glaf">
-	<!-- 基礎課題 -->
-	<canvas id="myChart_A" width="100%" height="15%"></canvas>
-	<button class="button_A btn--yellow">詳細</button>
-	<div id="ChartA" class="detail">
-	<canvas id="myChart_A_1" width="100%" height="15%"></canvas>
-	<canvas id="myChart_A_2" width="100%" height="15%"></canvas>
-	<canvas id="myChart_A_3" width="100%" height="15%"></canvas>
-	<canvas id="myChart_A_4" width="100%" height="15%"></canvas>
-	<canvas id="myChart_A_5" width="100%" height="15%"></canvas>
-	<canvas id="myChart_A_6" width="100%" height="15%"></canvas>
-	<canvas id="myChart_A_7" width="100%" height="15%"></canvas>
-	</div>
-	
-	<!-- 応用課題 -->
-	<canvas id="myChart_B" width="100%" height="15%"></canvas>
-	<button class="button_B btn--yellow">詳細</button>
-	<div id="ChartB" class="detail">
-	<canvas id="myChart_B_1" width="100%" height="15%"></canvas>
-	<canvas id="myChart_B_2" width="100%" height="15%"></canvas>
-	<canvas id="myChart_B_3" width="100%" height="15%"></canvas>
+	<div class="graph_container">
+        <a href="{{ url('/Calendar') }}" class="btn2 btn--yellow btn--cubic"　>戻る</a>
+        <div class="glaf">
+        <!-- 基礎課題 -->
+        <canvas id="myChart_A" width="100%" height="15%"></canvas>
+        <button class="button_A btn--yellow">詳細</button>
+        <div id="ChartA" class="detail">
+        <canvas id="myChart_A_1" width="100%" height="15%"></canvas>
+        <canvas id="myChart_A_2" width="100%" height="15%"></canvas>
+        <canvas id="myChart_A_3" width="100%" height="15%"></canvas>
+        <canvas id="myChart_A_4" width="100%" height="15%"></canvas>
+        <canvas id="myChart_A_5" width="100%" height="15%"></canvas>
+        <canvas id="myChart_A_6" width="100%" height="15%"></canvas>
+        <canvas id="myChart_A_7" width="100%" height="15%"></canvas>
+        </div>
+        
+        <!-- 応用課題 -->
+        <canvas id="myChart_B" width="100%" height="15%"></canvas>
+        <button class="button_B btn--yellow">詳細</button>
+        <div id="ChartB" class="detail">
+        <canvas id="myChart_B_1" width="100%" height="15%"></canvas>
+        <canvas id="myChart_B_2" width="100%" height="15%"></canvas>
+        <canvas id="myChart_B_3" width="100%" height="15%"></canvas>
+        </div>
+        
+        <!-- 開発課題 -->
+        <canvas id="myChart_C" width="100%" height="15%"></canvas>
+        <button class="button_C btn--yellow">詳細</button>
+        <div id="ChartC" class="detail">
+        <canvas id="myChart_C_1" width="100%" height="15%"></canvas>
+        <canvas id="myChart_C_2" width="100%" height="15%"></canvas>
+        </div>
     </div>
-	
-	<!-- 開発課題 -->
-	<canvas id="myChart_C" width="100%" height="15%"></canvas>
-	<button class="button_C btn--yellow">詳細</button>
-	<div id="ChartC" class="detail">
-	<canvas id="myChart_C_1" width="100%" height="15%"></canvas>
-	<canvas id="myChart_C_2" width="100%" height="15%"></canvas>
-	</div>
-	
 
 
 </div>

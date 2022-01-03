@@ -58,7 +58,7 @@ class EventController extends Controller
             'end_time' => 'required'
         ]);
         if(strtotime($request->start_time) >= strtotime($request->end_time)){
-            return redirect('event_input')->with('flash_message', '終了時刻は開始時刻より後に設定してください')->withInput();
+            return redirect('/event_input/'.$date)->with('flash_message', '終了時刻は開始時刻より後に設定してください')->withInput();
         }
         else{
         // イベント登録
