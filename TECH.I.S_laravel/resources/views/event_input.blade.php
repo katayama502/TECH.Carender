@@ -62,7 +62,7 @@
 
         <footer>
             <div class="footer_link">
-                <button onclick="location.href='{{ url('/Calendar')}}'">カレンダーへ戻る</button>
+                <button onclick="location.href='{{ url('/Calendar_admin')}}'">カレンダーへ戻る</button>
             </div>
         </footer>
         
