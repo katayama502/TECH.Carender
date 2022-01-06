@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <link rel="stylesheet" href="{{ asset('css/main.css') }}">
@@ -11,39 +12,39 @@
 
 	
 	
-	
-	<a href="{{ url('/Calendar') }}" class="btn2 btn--yellow btn--cubic"　>戻る</a>
-	<div class="glaf">
-	<!-- 基礎課題 -->
-	<canvas id="myChart_A" width="100%" height="15%"></canvas>
-	<button class="button_A btn--yellow">詳細</button>
-	<div id="ChartA" class="detail">
-	<canvas id="myChart_A_1" width="100%" height="15%"></canvas>
-	<canvas id="myChart_A_2" width="100%" height="15%"></canvas>
-	<canvas id="myChart_A_3" width="100%" height="15%"></canvas>
-	<canvas id="myChart_A_4" width="100%" height="15%"></canvas>
-	<canvas id="myChart_A_5" width="100%" height="15%"></canvas>
-	<canvas id="myChart_A_6" width="100%" height="15%"></canvas>
-	<canvas id="myChart_A_7" width="100%" height="15%"></canvas>
-	</div>
-	
-	<!-- 応用課題 -->
-	<canvas id="myChart_B" width="100%" height="15%"></canvas>
-	<button class="button_B btn--yellow">詳細</button>
-	<div id="ChartB" class="detail">
-	<canvas id="myChart_B_1" width="100%" height="15%"></canvas>
-	<canvas id="myChart_B_2" width="100%" height="15%"></canvas>
-	<canvas id="myChart_B_3" width="100%" height="15%"></canvas>
+	<div class="graph_container">
+        <a href="{{ url('/Calendar') }}" class="btn2 btn--yellow btn--cubic"　>戻る</a>
+        <div class="glaf">
+        <!-- 基礎課題 -->
+        <canvas id="myChart_A" width="100%" height="40%" class="graph"></canvas>
+        <button class="button_A btn--yellow">詳細</button>
+        <div id="ChartA" class="detail">
+        <canvas id="myChart_A_1" width="100%" height="40%"></canvas>
+        <canvas id="myChart_A_2" width="100%" height="40%"></canvas>
+        <canvas id="myChart_A_3" width="100%" height="40%"></canvas>
+        <canvas id="myChart_A_4" width="100%" height="40%"></canvas>
+        <canvas id="myChart_A_5" width="100%" height="40%"></canvas>
+        <canvas id="myChart_A_6" width="100%" height="40%"></canvas>
+        <canvas id="myChart_A_7" width="100%" height="40%"></canvas>
+        </div>
+        
+        <!-- 応用課題 -->
+        <canvas id="myChart_B" width="100%" height="40%"></canvas>
+        <button class="button_B btn--yellow">詳細</button>
+        <div id="ChartB" class="detail">
+        <canvas id="myChart_B_1" width="100%" height="40%"></canvas>
+        <canvas id="myChart_B_2" width="100%" height="40%"></canvas>
+        <canvas id="myChart_B_3" width="100%" height="40%"></canvas>
+        </div>
+        
+        <!-- 開発課題 -->
+        <canvas id="myChart_C" width="100%" height="40%"></canvas>
+        <button class="button_C btn--yellow">詳細</button>
+        <div id="ChartC" class="detail">
+        <canvas id="myChart_C_1" width="100%" height="40%"></canvas>
+        <canvas id="myChart_C_2" width="100%" height="40%"></canvas>
+        </div>
     </div>
-	
-	<!-- 開発課題 -->
-	<canvas id="myChart_C" width="100%" height="15%"></canvas>
-	<button class="button_C btn--yellow">詳細</button>
-	<div id="ChartC" class="detail">
-	<canvas id="myChart_C_1" width="100%" height="15%"></canvas>
-	<canvas id="myChart_C_2" width="100%" height="15%"></canvas>
-	</div>
-	
 
 
 </div>
@@ -434,9 +435,23 @@ if($count_C_2>90){
 
 
 <script>
-	Chart.defaults.global.defaultFontSize = 20;
-	var ctx = document.getElementById('myChart_A').getContext('2d');
 	
+    var lastInnerWidth = document.documentElement.clientWidth; //window.innerWidthで現在の画面幅を取得
+
+            // 横幅が変わったとき実行される関数
+            window.addEventListener("resize", function () {
+                // 現在と前回の横幅が違う場合だけ実行
+                if (lastInnerWidth != document.documentElement.clientWidth) {
+                    // 横幅を記録しておく
+                    lastInnerWidth = document.documentElement.clientWidth;
+                    if (lastInnerWidth <= 480) { // 画面幅480px以下の場合
+                        Chart.defaults.global.defaultFontSize = 15; 
+                    } else { // 画面幅481px以上の場合
+                        Chart.defaults.global.defaultFontSize = 20;
+                    }
+                }
+            });
+	var ctx = document.getElementById('myChart_A').getContext('2d');
 	var chart = new Chart(ctx, {
 		type: 'horizontalBar',
 		data: {
@@ -476,6 +491,7 @@ if($count_C_2>90){
 
 <script>
 	var ctx = document.getElementById('myChart_A_1').getContext('2d');
+
 	var chart = new Chart(ctx, {
 		type: 'horizontalBar',
 		data: {
@@ -484,7 +500,8 @@ if($count_C_2>90){
 				label: '基礎課題進捗状況',
 				data: [<?php echo $count_A_1 ?>],
 				backgroundColor: 'rgb(0, 0, 255)',
-				borderColor: 'rgb(0, 0, 255)'
+				borderColor: 'rgb(0, 0, 255)',
+
 			}]
 		},
 		options: {
@@ -1019,5 +1036,9 @@ $('.button_C').on('click', function() {
       }
     });
 </script>
+
+<style>
+   
+</style>
 
 
