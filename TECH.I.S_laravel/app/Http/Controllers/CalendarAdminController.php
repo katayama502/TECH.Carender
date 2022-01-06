@@ -49,8 +49,10 @@ class CalendarAdminController extends Controller
         // $date_day = substr($date,8,2);
         // $date = session()->get('date');
 
-        return redirect('/event_input/'.$date) ->with([
-            //'date' => $date,
+
+        return redirect('/event_input') ->with([
+            // 'date' => $date,
+
         ]);
     }
     public function getLogout(Request $request)

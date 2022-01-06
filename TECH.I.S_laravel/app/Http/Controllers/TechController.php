@@ -131,7 +131,7 @@ class TechController extends Controller
 //ユーザー新規登録//
 
   public function add(Request $request){
-
+    
     $sain_User_name = $request->sain_User_name;
     $sain_User_pass = $request->sain_User_pass;
 
@@ -153,14 +153,14 @@ class TechController extends Controller
         return redirect('New_sain');
       }
 
-      $request->validate([
-        'sain_User_name' => 'required|email|unique:administrators,email',
-        'sain_User_pass' => 'min:8|regex:/\A(?=.?[a-z])(?=.?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/',
-      ]);
+      // $request->validate([
+      //   'sain_User_name' => 'required|email|unique:administrators,email',
+      //   'sain_User_pass' => 'min:8|regex:/\A(?=.?[a-z])(?=.?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/',
+      // ]);
 
       $user = User::where('email',$sain_User_name) -> first();
-      $user_email=$user;
-      if(!empty($user_email)){
+      // $user_email=$user;
+      if(!empty($user)){
         return redirect('New_sain')->with('flash_message', '既にそのユーザーは登録されています！');
       }
       $sain_User_name = $request->sain_User_name;
@@ -264,7 +264,7 @@ public function admin_add_1(Request $request){
     'admin_sain_pass' => 'min:8|regex:/\A(?=.?[a-z])(?=.?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/',
   ]);
   
-  $user = User::where('email',$admin_sain_name) -> first();
+  $user = Administrators::where('email',$admin_sain_name) -> first();
       $admin_email=$user;
       if(!empty($admin_email)){
         return redirect('sain_admin')->with('flash_message', '既にそのユーザーは登録されています！');
