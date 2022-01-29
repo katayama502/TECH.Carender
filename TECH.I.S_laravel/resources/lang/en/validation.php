@@ -140,6 +140,33 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'genre' => [
+            'required' =>'課題を選択してください',
+        ],
+        'category_name' => [
+            'required' =>'カテゴリを選択してください',
+        ],
+        'lesson_number' => [
+            'required' =>'レッスンNoを選択してください',
+        ],
+        'memo' => [
+            'required' =>'メモを入力してください',
+        ],
+        'event_name' => [
+            'required' =>'イベント名を入力してください',
+        ],
+        'start_time' => [
+            'required' =>'開始時刻を入力してください',
+        ],
+        'end_time' => [
+            'required' =>'終了時刻を入力してください',
+        ],
+
+        'Introduction_name' => [
+            'regex' => '正しくメールアドレスを入力してください。',
+        ],
+        
+
     ],
 
     /*
@@ -153,6 +180,18 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+
+        'login_User_name' => 'メールアドレスを入力してください。',
+        'login_User_pass' =>'パスワードを入力してください。',
+        'sain_User_name' => '正しくメールアドレスを入力してください。',
+        'sain_User_pass' =>'パスワードを入力してください。',
+
+        'admin_sain_name' => 'メールアドレスを入力してください。',
+        'admin_sain_pass' =>'パスワードを入力してください。',
+        'admin_login_name' => '正しくメールアドレスを入力してください。',
+        'admin_login_pass' =>'パスワードを入力してください。',
+
+    ],
 
 ];
